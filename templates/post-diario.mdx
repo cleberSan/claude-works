@@ -1,0 +1,36 @@
+{/* resumo: Modelo de post do diário do portfolio-web (MDX começando em ##, seções do problema ao próximo passo) e a entrada em posts.ts. Variáveis FASE, SLUG, TITULO, DESCRICAO, DATA. */}
+{/*
+Registro em src/content/posts.ts (copie para lá e apague este bloco):
+  {
+    slug: "{{SLUG}}",
+    title: "Fase {{FASE}}: {{TITULO}}",
+    description: "{{DESCRICAO}}",
+    publishedAt: "{{DATA}}",
+    phase: {{FASE}},
+    tags: ["Tag 1", "Tag 2"], // 2 a 4 tags
+  },
+Arquivo: src/content/diario/{{SLUG}}.mdx. O título vem da página: comece em ##.
+*/}
+
+## O problema
+
+O que faltava antes desta fase e a restrição que guiou a solução (custo, segurança, prazo). Lembre que os dados são 100% sintéticos.
+
+## Decisão 1, em linguagem de quem lê (troque este título)
+
+O que foi feito, por que, e o que foi descartado. Link para o ADR no GitHub:
+[ADR-NNNN](https://github.com/cleberSan/careflow/blob/main/docs/adr/NNNN-titulo.md).
+
+## Decisão 2 (troque este título)
+
+## O que os testes encontraram
+
+Bugs ou riscos que só apareceram com teste (concorrência, PII em log, CSP). Mostra o processo, não só o resultado.
+
+## Trade-offs aceitos
+
+- Risco residual e por que é aceitável numa demonstração.
+
+## Próximo passo
+
+A próxima fase em uma frase.

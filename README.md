@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/cleberSan/claude-works/actions/workflows/ci.yml/badge.svg)](https://github.com/cleberSan/claude-works/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/cleberSan/claude-works/actions/workflows/codeql.yml/badge.svg)](https://github.com/cleberSan/claude-works/actions/workflows/codeql.yml)
+[![Licença: MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-blue.svg)](LICENSE)
 
 Base de conhecimento do meu ecossistema de desenvolvimento, escrita para o **Claude** ler antes de trabalhar: projetos, decisões, convenções, stacks, APIs, trechos de código, modelos, pipelines, skills e fluxos de agentes. O objetivo é que cada conversa ou sessão comece sabendo o essencial **sem reler históricos nem repositórios inteiros**, gastando poucos tokens.
 
@@ -95,3 +96,7 @@ O repositório é público. Ficam de fora segredos e chaves, identificadores de 
 
 - [ADR-0000](docs/adr/0000-registrar-decisoes-com-adr.md): registrar decisões com ADR.
 - [ADR-0001](docs/adr/0001-base-em-camadas-e-publica.md): base em camadas, pública, em português, com índice gerado e validador sem dependências.
+
+## Licença
+
+[MIT](LICENSE), como os outros repositórios. Vale para o texto e os scripts desta base; código copiado dos outros projetos segue a licença de lá (também MIT).

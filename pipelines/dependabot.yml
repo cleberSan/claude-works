@@ -1,0 +1,29 @@
+# resumo: Dependabot semanal agrupado para npm, NuGet e GitHub Actions, no padrão dos repositórios.
+# Copie para .github/dependabot.yml e apague os ecossistemas que o repositório não usa.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      testes:
+        patterns: ["vitest", "@vitest/*", "@testing-library/*", "jsdom", "@playwright/test", "@axe-core/*"]
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: nuget
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      testes:
+        patterns: ["xunit*", "coverlet*"]
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]

@@ -1,0 +1,10 @@
+node_modules/
+coverage/
+.cache/
+*.log
+.DS_Store
+# Segredo nunca entra aqui, nem por engano.
+.env
+.env.*
+*.pem
+*.key

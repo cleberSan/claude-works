@@ -1,0 +1,11 @@
+# Sem dependências npm de propósito (docs/adr/0001): só as actions dos workflows.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]
+    open-pull-requests-limit: 5

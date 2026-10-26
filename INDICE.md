@@ -7,7 +7,7 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 
 - [ambiente-cloud.md](memorias/ambiente-cloud.md) ~900: Armadilhas do container do Claude Code na nuvem e como rodar build, testes e E2E dos três projetos nele.
 - [convencoes-de-trabalho.md](memorias/convencoes-de-trabalho.md) ~1,0k: Como o trabalho anda - projeto no Claude, uma thread por fase, cards de decisão, PRs, ordem de merge, entrega de textos.
-- [decisoes.md](memorias/decisoes.md) ~1,7k: Linha do tempo das decisões do Cleber em todos os projetos, com o porquê e onde estão registradas.
+- [decisoes.md](memorias/decisoes.md) ~1,8k: Linha do tempo das decisões do Cleber em todos os projetos, com o porquê e onde estão registradas.
 - [licoes-aprendidas.md](memorias/licoes-aprendidas.md) ~1,2k: Lições técnicas que custaram tempo (cobertura, Polly, CI, Oracle, cookies, LLM, imagens, Cloudflare) para não repetir.
 - [perfil-e-preferencias.md](memorias/perfil-e-preferencias.md) ~1,0k: Quem é o Cleber (só fatos públicos), como ele quer as respostas e o que é decisão dele.
 

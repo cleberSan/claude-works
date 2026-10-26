@@ -153,18 +153,20 @@ export async function main(args, context = {}) {
   const plan = await planRepository(context.root ?? REPOSITORY_ROOT, parsed.settings);
   for (const { target, content } of plan) {
     const file = path.join(destination, target);
-    const exists = await stat(file).then(() => true, () => false);
-    if (exists) {
-      out(`mantido   ${target} (já existe)`);
-      continue;
-    }
     if (options.simular) {
-      out(`criaria   ${target}`);
+      const exists = await stat(file).then(() => true, () => false);
+      out(exists ? `mantido   ${target} (já existe)` : `criaria   ${target}`);
       continue;
     }
+    // Sem conferir antes: "wx" cria ou falha num passo só, sem janela entre checar e gravar.
     await mkdir(path.dirname(file), { recursive: true });
-    await writeFile(file, content, { encoding: "utf8", flag: "wx" });
-    out(`criado    ${target}`);
+    try {
+      await writeFile(file, content, { encoding: "utf8", flag: "wx" });
+      out(`criado    ${target}`);
+    } catch (error) {
+      if (/** @type {NodeJS.ErrnoException} */ (error).code !== "EEXIST") throw error;
+      out(`mantido   ${target} (já existe)`);
+    }
   }
 
   out("");

@@ -1,6 +1,6 @@
 ---
 resumo: Quem é o Cleber (só fatos públicos), como ele quer as respostas e o que é decisão dele.
-atualizado: 2026-10-26
+atualizado: 2026-10-27
 fontes:
   - https://github.com/cleberSan/portfolio-web/blob/main/src/content/profile.ts
 ---
@@ -14,7 +14,7 @@ fontes:
 - **Fonte única do perfil:** `src/content/profile.ts` no portfolio-web (experiências, formação, certificações, idiomas). Não reler o PDF do LinkedIn; ele tem dados pessoais que não podem ser copiados.
 - **Base técnica:** .NET/C#, mensageria (RabbitMQ/AMQP, Azure Service Bus), resiliência (idempotência, retry com backoff, reconciliação), SQL Server, PostgreSQL, MySQL, MongoDB, React, Angular, ASP.NET Razor, AWS e Azure (APIM, App Services, DevOps), Docker, Kubernetes, Rancher, SonarQube, Datadog, Instana, OpenTelemetry, Serilog.
 - **IA no ciclo de engenharia:** Claude Code e GitHub Copilot, sempre com revisão humana; contexto versionado (CLAUDE.md) com regras de arquitetura e limites de automação.
-- **Contato público:** só LinkedIn e GitHub. Nunca publicar e-mail, telefone ou endereço (o portfolio-web tem teste que garante).
+- **Contato público:** LinkedIn, GitHub e, desde 2026-10-27, o telefone/WhatsApp que ele autorizou no portfolio-web (número só em `src/config/site.ts` de lá; não copiar para esta base). Nunca publicar e-mail nem endereço (o portfolio-web tem testes que garantem).
 
 ## Como responder
 

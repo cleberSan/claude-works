@@ -9,7 +9,7 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 - [convencoes-de-trabalho.md](memorias/convencoes-de-trabalho.md) ~1,0k: Como o trabalho anda - projeto no Claude, uma thread por fase, cards de decisão, PRs, ordem de merge, entrega de textos.
 - [decisoes.md](memorias/decisoes.md) ~1,8k: Linha do tempo das decisões do Cleber em todos os projetos, com o porquê e onde estão registradas.
 - [licoes-aprendidas.md](memorias/licoes-aprendidas.md) ~1,2k: Lições técnicas que custaram tempo (cobertura, Polly, CI, Oracle, cookies, LLM, imagens, Cloudflare) para não repetir.
-- [perfil-e-preferencias.md](memorias/perfil-e-preferencias.md) ~1,0k: Quem é o Cleber (só fatos públicos), como ele quer as respostas e o que é decisão dele.
+- [perfil-e-preferencias.md](memorias/perfil-e-preferencias.md) ~1,1k: Quem é o Cleber (só fatos públicos), como ele quer as respostas e o que é decisão dele.
 
 ## Projetos (`projetos/`)
 
@@ -20,7 +20,7 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 - [careflow/README.md](projetos/careflow/README.md) ~1,9k: CareFlow, o projeto vitrine - o que é, estado atual, estrutura do repositório, ADRs e por onde começar.
 - [linkedin.md](projetos/linkedin.md) ~600: Presença no LinkedIn - o que já foi publicado sobre o CareFlow, onde estão os textos e vídeos, limites e regras para novos posts.
 - [lojinha-da-lua.md](projetos/lojinha-da-lua.md) ~1,8k: lojinha-da-lua, catálogo de uma loja real com pedido pelo WhatsApp - stack, rotas, regras de conteúdo da loja, ADRs, deploy na Cloudflare e tarefas comuns.
-- [portfolio-web.md](projetos/portfolio-web.md) ~1,9k: portfolio-web, o site pessoal em Next.js 16 - rotas, onde fica cada conteúdo, visual, testes, deploy na Vercel e tarefas comuns.
+- [portfolio-web.md](projetos/portfolio-web.md) ~2,1k: portfolio-web, o site pessoal em Next.js 16 - rotas, onde fica cada conteúdo, visual, testes, deploy na Vercel e tarefas comuns.
 
 ## Stacks (`stacks/`)
 
@@ -114,4 +114,4 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 - [adr/0001-base-em-camadas-e-publica.md](docs/adr/0001-base-em-camadas-e-publica.md) ~700: ADR-0001 da base - leitura em camadas para gastar poucos tokens, conteúdo só público, português, índice gerado e validador sem dependências no CI.
 - [glossario.md](docs/glossario.md) ~1,0k: Glossário do ecossistema - termos de domínio, segurança, mensageria e operação usados nos projetos, com o nome no código.
 
-Total: 75 arquivos, ~60,2k tokens. Ler tudo raramente compensa.
+Total: 75 arquivos, ~60,5k tokens. Ler tudo raramente compensa.

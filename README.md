@@ -90,7 +90,7 @@ Sem dependências: Node 24 (funciona a partir do 22.12), nada para instalar. Det
 
 ## O que nunca entra aqui
 
-O repositório é público. Ficam de fora segredos e chaves, identificadores de conta de nuvem, contato pessoal ou de terceiros (o meu público é só [LinkedIn](https://www.linkedin.com/in/cleber-costa-santos/) e GitHub), CPF mesmo sintético, assuntos pessoais de carreira e dados de clientes. O validador barra os formatos mais comuns; a revisão do PR cuida do resto. Veja [SECURITY.md](SECURITY.md).
+O repositório é público. Ficam de fora segredos e chaves, identificadores de conta de nuvem, contato pessoal ou de terceiros (o meu contato público fica no [portfólio](https://portfolio-web-psi-rust.vercel.app): [LinkedIn](https://www.linkedin.com/in/cleber-costa-santos/), GitHub e telefone), CPF mesmo sintético, assuntos pessoais de carreira e dados de clientes. O validador barra os formatos mais comuns; a revisão do PR cuida do resto. Veja [SECURITY.md](SECURITY.md).
 
 ## Decisões
 

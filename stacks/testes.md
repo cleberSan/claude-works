@@ -1,6 +1,6 @@
 ---
 resumo: Estratégia de testes do ecossistema - pirâmide por stack, cobertura de 80% medida certo, concorrência, segurança, E2E com axe e o que cada camada prova.
-atualizado: 2026-10-26
+atualizado: 2026-10-27
 ---
 
 # Testes

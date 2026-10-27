@@ -26,7 +26,7 @@ Princípio: **qualidade do teste acima da cobertura artificial**, mas o CI barra
 - **Sem dado pessoal em logs e telemetria:** fluxos completos com log em nível Trace e varredura de spans, logs e métricas exportados atrás de nome, CPF, telefone e e-mail.
 - **Mensageria:** broker fora, duplicata, desordem, mensagem envenenada indo para DLQ, nenhuma perda nem efeito duplo.
 - **Segurança HTTP:** cabeçalhos e CSP conferidos no E2E; console sem erro.
-- **Conteúdo:** registro e arquivos batem (posts), preços batem com a fonte (flyers), nenhum contato pessoal publicado.
+- **Conteúdo:** registro e arquivos batem (posts), preços batem com a fonte (flyers), nenhum contato pessoal publicado além do autorizado.
 - **Restauração:** backup, ensaio e restauração reaplicando eliminações (CI do careflow em todo PR).
 - **IA:** avaliação reproduzível com respostas gravadas; métricas (acerto exato, a até um nível, subtriagem, recusas) publicadas como artefato.
 

@@ -29,7 +29,7 @@
 - [ ] CI: format, lint, tipos, cobertura, build, E2E; CodeQL; revisão de dependências; `npm audit` de produção
 
 ## Privacidade
-- [ ] Nenhum e-mail, telefone ou endereço pessoal (teste que garante)
+- [ ] Nenhum contato pessoal além do que o dono autorizou por escrito; e-mail e endereço só com pedido explícito (teste que garante)
 - [ ] Nenhum rastreador de terceiros; fontes self-hosted
 - [ ] Página de privacidade se guardar qualquer coisa no aparelho
 

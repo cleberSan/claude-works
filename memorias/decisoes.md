@@ -1,6 +1,6 @@
 ---
 resumo: Linha do tempo das decisões do Cleber em todos os projetos, com o porquê e onde estão registradas.
-atualizado: 2026-10-26
+atualizado: 2026-10-27
 ---
 
 # Decisões
@@ -52,6 +52,7 @@ Decisões tomadas pelo Cleber (em geral num card com opção recomendada). O reg
 | 2026-10-18 | Visual "Sala de controle" (topologia animada, KPIs); tema segue o sistema, sem botão | Botão sem flash exigiria script inline, que a CSP sem nonce não permite | portfolio-web #19 |
 | 2026-10-18 | Site centrado no Cleber (trajetória, competências) e contato só LinkedIn + GitHub | Site era centrado demais no CareFlow; privacidade | portfolio-web #20 |
 | 2026-10-23 | Seção "O fluxo em um minuto" com vídeo na página do CareFlow | Mostrar o produto sem backend no ar | portfolio-web #25 |
+| 2026-10-27 | Home como portfólio de página única (cases, atuação, trajetória, contato) e currículo em `/curriculo`; telefone e WhatsApp passam a ser publicados no site, e-mail e endereço continuam fora | Pedido do Cleber, com um portfólio de referência; ele autorizou o telefone | portfolio-web #29 |
 
 ## lojinha-da-lua
 

@@ -24,7 +24,7 @@ Base de conhecimento do ecossistema de desenvolvimento de Cleber Costa Santos. C
   - Toda decisão de arquitetura, segurança, dados ou operação vira ADR (`docs/adr/NNNN-titulo.md`).
   - Só dados sintéticos; nenhuma promessa clínica ou jurídica; dado de terceiro só da fonte dele.
   - O CareFlow é **Vertical Slices + DDD** (ADR-0001). Nunca dizer que usa Clean Architecture.
-  - Contato público do Cleber: só LinkedIn e GitHub.
+  - Contato público do Cleber: LinkedIn, GitHub e o telefone/WhatsApp que ele autorizou no site (o número fica só no `src/config/site.ts` do portfolio-web, nunca aqui). E-mail e endereço, nunca.
 
 ## Mapa
 

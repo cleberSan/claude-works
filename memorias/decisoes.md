@@ -53,6 +53,8 @@ Decisões tomadas pelo Cleber (em geral num card com opção recomendada). O reg
 | 2026-10-18 | Site centrado no Cleber (trajetória, competências) e contato só LinkedIn + GitHub | Site era centrado demais no CareFlow; privacidade | portfolio-web #20 |
 | 2026-10-23 | Seção "O fluxo em um minuto" com vídeo na página do CareFlow | Mostrar o produto sem backend no ar | portfolio-web #25 |
 | 2026-10-27 | Home como portfólio de página única (cases, atuação, trajetória, contato) e currículo em `/curriculo`; telefone e WhatsApp passam a ser publicados no site, e-mail e endereço continuam fora | Pedido do Cleber, com um portfólio de referência; ele autorizou o telefone | portfolio-web #29 |
+| 2026-10-27 | O site não é currículo online nem fala em disponibilidade: sai a página `/curriculo` (301 para `/sobre`) | O site mostra quem ele é e como trabalha | portfolio-web #30 |
+| 2026-10-27 | Home e Sobre em inglês (`/en`, `/en/about`) com seletor PT-BR \| EN; projetos, diário e Painel seguem em português | Alcance de quem lê em inglês, sem traduzir tudo de uma vez | ADR-0006, portfolio-web #31 |
 
 ## lojinha-da-lua
 

@@ -1,6 +1,6 @@
 ---
 resumo: Quem é o Cleber (só fatos públicos), como ele quer as respostas e o que é decisão dele.
-atualizado: 2026-10-27
+atualizado: 2026-10-30
 fontes:
   - https://github.com/cleberSan/portfolio-web/blob/main/src/content/profile.ts
 ---
@@ -35,7 +35,7 @@ Pergunte antes de codar, num card com opções e uma recomendada, e siga na reco
 - Consistência eventual no lugar de validação síncrona.
 - Mudança de escopo, de projeto vitrine ou de identidade visual.
 - Fonte, template ou kit de UI pago; biblioteca nova.
-- **Merge é dele.** O Claude abre o PR e deixa pronto; no `lojinha-da-lua` o Claude nunca faz merge, nem de Dependabot.
+- **Merge é dele.** O Claude abre o PR e deixa pronto; no `lojinha-da-lua` o Claude nunca faz merge, nem de Dependabot. Exceção que ele decidiu (2026-10-30): nos sites, o GitHub mescla sozinho os PRs de baixo risco do Dependabot ([pipelines](../pipelines/README.md#dependabot-e-auto-merge-2026-10-30)).
 
 ## Segredos e contas
 

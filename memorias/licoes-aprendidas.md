@@ -1,6 +1,6 @@
 ---
-resumo: Lições técnicas que custaram tempo (cobertura, Polly, CI, Oracle, cookies, LLM, imagens, Cloudflare) para não repetir.
-atualizado: 2026-10-26
+resumo: Lições técnicas que custaram tempo (cobertura, Polly, CI, Dependabot, Oracle, cookies, LLM, imagens, Cloudflare) para não repetir.
+atualizado: 2026-10-30
 ---
 
 # Lições aprendidas
@@ -21,6 +21,15 @@ Cada item: o sintoma, a causa e o que fazer. Origem entre parênteses.
 - Glob em diretório só do root (`/etc/careflow/env/*.env`, 0700) precisa de `sudo bash -c '...'`; o glob expande antes do `sudo`. (fase 9)
 - Action de terceiro com tag móvel é alerta do CodeQL. Use só `actions/*` e `github/*`, ou fixe por SHA. (fase 9)
 - Dependabot de TypeScript 7 quebrou `npm ci` porque `@astrojs/check` exige TS ^5 ou ^6 como peer. Não dá para aceitar sem a dependência acompanhar. (lojinha)
+
+## Dependabot e auto-merge
+
+- **Merge feito pelo `GITHUB_TOKEN` não dispara workflows de `push`.** Auto-merge ligado por um workflow com o token padrão mescla sem rodar CI, CodeQL ou Imagens na `main`. Nos sites o deploy é pelo app do provedor e não muda; no careflow as imagens do commit não seriam publicadas e o deploy pararia. Saída: token de GitHub App. (careflow ADR-0014)
+- **NU1004 em PR de NuGet.** Com Central Package Management, pinagem transitiva e `restore --locked-mode`, o Dependabot atualiza o `packages.lock.json` de quem referencia o pacote direto, mas não o de quem recebe por referência de projeto. Saída: `dotnet restore --force-evaluate` no branch, conferir que só lock files mudaram, push. (careflow ADR-0014)
+- **PR só desatualizado não é refeito.** Com "branch atualizado" exigido, o Dependabot faz rebase quando há conflito, não quando a `main` andou; o segundo PR automático fica parado. Saída: um grupo de minor e patch por semana e actions em outro dia; se parar, `@dependabot rebase`.
+- **Workflow novo não avalia PR antigo.** O auto-merge só decide quando o PR recebe um evento. PR aberto antes do workflow precisa de `@dependabot rebase` (ou espera a próxima rodada). (portfolio-web #23, lojinha #10)
+- **Mudar o `dependabot.yml` dispara uma rodada na hora.** PRs de grupos que deixaram de existir são fechados com "no longer updatable" e voltam no formato novo. (2026-10-30)
+- **`dependabot/fetch-metadata` confere só o primeiro commit.** Para decidir merge, confira pela API que todos os commits do PR são do Dependabot e têm assinatura verificada.
 
 ## Oracle Cloud (Always Free)
 

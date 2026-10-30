@@ -1,29 +1,62 @@
-# resumo: Dependabot semanal agrupado para npm, NuGet e GitHub Actions, no padrão dos repositórios.
+# resumo: Dependabot com cooldown de 7 dias e grupos para npm, NuGet e GitHub Actions, no padrão dos repositórios (README desta pasta).
 # Copie para .github/dependabot.yml e apague os ecossistemas que o repositório não usa.
+# Versão nova só vira PR depois de 7 dias publicada (cooldown): tempo para o registro tirar do ar uma versão
+# comprometida. Correção de segurança não espera.
 version: 2
 updates:
   - package-ecosystem: npm
     directory: /
     schedule:
+      # Antes da conferência diária do site no ar (6h23), se o repositório tiver uma.
       interval: weekly
+      day: monday
+      time: "05:00"
+      timezone: America/Sao_Paulo
+    cooldown:
+      default-days: 7
     groups:
+      # Minor e patch de tudo num PR só por semana: um merge por vez, sem PR parado como desatualizado.
+      dependencias:
+        patterns: ["*"]
+        update-types: [minor, patch]
+      # Majors que precisam casar versão sobem juntos. Acrescente o framework (Next com React, Astro com @astrojs/*).
       testes:
-        patterns: ["vitest", "@vitest/*", "@testing-library/*", "jsdom", "@playwright/test", "@axe-core/*"]
+        patterns: ["vitest", "@vitest/*"]
+        update-types: [major]
+    ignore:
+      # Tipos do Node acompanham o .nvmrc: trocar o Node é uma decisão à parte.
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
     open-pull-requests-limit: 5
 
+  # Mensal e sem auto-merge: o Dependabot não regenera o packages.lock.json de quem recebe o pacote por
+  # referência de projeto, e o restore travado falha com NU1004 (careflow ADR-0014).
   - package-ecosystem: nuget
     directory: /
     schedule:
-      interval: weekly
+      interval: monthly
+      time: "05:00"
+      timezone: America/Sao_Paulo
+    cooldown:
+      default-days: 7
     groups:
       testes:
-        patterns: ["xunit*", "coverlet*"]
+        patterns: ["xunit*", "coverlet*", "Testcontainers*", "Microsoft.AspNetCore.Mvc.Testing"]
+      dotnet:
+        patterns: ["Microsoft.*", "Npgsql*"]
+        update-types: [minor, patch]
     open-pull-requests-limit: 5
 
+  # Em outro dia da semana, para não disputar o merge com o PR das dependências.
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
+      day: wednesday
+      time: "05:00"
+      timezone: America/Sao_Paulo
+    cooldown:
+      default-days: 7
     groups:
       actions:
         patterns: ["*"]

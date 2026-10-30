@@ -1,6 +1,6 @@
 ---
 resumo: lojinha-da-lua, catálogo de uma loja real com pedido pelo WhatsApp - stack, rotas, regras de conteúdo da loja, ADRs, deploy na Cloudflare e tarefas comuns.
-atualizado: 2026-10-26
+atualizado: 2026-10-30
 fontes:
   - https://github.com/cleberSan/lojinha-da-lua
   - https://lojinha-da-lua.clebersan.workers.dev
@@ -16,7 +16,7 @@ Site da **Lojinha Da Lua**, loja real de produtos personalizados (camisetas em s
 - Contatos (WhatsApp e Instagram) só em `src/config/store.ts`, validados no build: celular `55DD9XXXXXXXX` e **exatamente um** número com `receivesOrders: true`. Não copie os números para outro lugar.
 - Produtos ou serviços citados pela loja sem flyer e sem preço (ex.: azulejos, DTF UV) só entram quando a loja mandar os dados.
 - Imagem com personagem, marca ou pessoa de terceiros só com decisão registrada (ADR-0009 aceitou as estampas dos flyers; plano de remoção no próprio ADR).
-- **O Claude nunca faz merge** neste repositório, nem de Dependabot.
+- **O Claude nunca faz merge** neste repositório, nem de Dependabot. Desde 2026-10-30 o próprio GitHub mescla os PRs de baixo risco do Dependabot depois dos checks (ADR-0010, decisão do Cleber); major e minor de Astro/React continuam com ele.
 
 ## Stack
 
@@ -58,6 +58,7 @@ e2e/                               suíte usada no CI e contra a produção (E2E
 | 0007 | SEO e prévia de links (Open Graph, canonical, JSON-LD de loja e produto, sitemap) sem dependência |
 | 0008 | Conferência diária do site no ar com a mesma suíte E2E; endereço de produção no código |
 | 0009 | Fotos dos flyers com as estampas originais (Real-ESRGAN x4 local; Lanczos onde há texto) |
+| 0010 | Dependabot com cooldown de 7 dias e auto-merge só de baixo risco; npm na segunda às 4h, antes da conferência das 6h23 |
 
 ## Testes, CI e produção
 
@@ -82,7 +83,7 @@ e2e/                               suíte usada no CI e contra a produção (E2E
 
 ## Histórico
 
-#1 base (2026-10-23), #5 ilhas, `/contato`, `/privacidade`, SEO; #6 conferência diária; #7 crédito no rodapé para o portfólio; #8 fotos dos flyers (2026-10-24). Dependabot #3 (TypeScript 7) não instala porque `@astrojs/check` exige TS 5 ou 6.
+#1 base (2026-10-23), #5 ilhas, `/contato`, `/privacidade`, SEO; #6 conferência diária; #7 crédito no rodapé para o portfólio; #8 fotos dos flyers (2026-10-24); #11 auto-merge do Dependabot (2026-10-30). Dependabot #3 (TypeScript 7) não instala porque `@astrojs/check` exige TS 5 ou 6; o Cleber mandou ignorar o major 7.
 
 ## Pendências
 

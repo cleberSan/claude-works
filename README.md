@@ -40,7 +40,7 @@ Leitura mínima (CLAUDE.md + INDICE.md) fica em torno de 6 mil tokens; a base in
 | [apis/](apis/) | Padrões HTTP, catálogo de rotas e eventos do CareFlow, APIs externas |
 | [snippets/](snippets/) | Código real dos projetos, recortado: Result + ProblemDetails, idempotência, RLS, Outbox/Inbox, CSP, Playwright + axe, estado no localStorage |
 | [templates/](templates/) | ADR, PR, README, SECURITY, cartão de projeto, prompt e decisões de fase, post do diário, skill, subagente, checklists |
-| [pipelines/](pipelines/) | Workflows prontos: CI .NET, CI Node, CodeQL, conferência diária em produção, Dependabot |
+| [pipelines/](pipelines/) | Workflows prontos: CI .NET, CI Node, CodeQL, conferência diária em produção, Dependabot e auto-merge criterioso dos PRs dele |
 | [agents/](agents/) | Fluxos de agentes autônomos: fase nova, revisão de PR, correção de bug, conteúdo, atualização da base |
 | [.claude/skills/](.claude/skills/) | Skills: `kb-atualizar`, `nova-fase`, `novo-adr`, `novo-repositorio`, `texto-linkedin`, `analise-staff`, `investigar-bug` |
 | [.claude/agents/](.claude/agents/) | Subagentes: pesquisador, implementador, QA destrutivo, guardião de segurança, revisor Staff, redator, curador da base |

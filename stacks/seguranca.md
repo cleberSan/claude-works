@@ -1,6 +1,6 @@
 ---
 resumo: Padrões de segurança aplicados nos projetos - OWASP Top 10 na prática, cabeçalhos e CSP, isolamento, criptografia, segredos, supply chain e LGPD.
-atualizado: 2026-10-26
+atualizado: 2026-10-30
 ---
 
 # Segurança
@@ -14,7 +14,7 @@ atualizado: 2026-10-26
 | Injeção | EF/Npgsql parametrizados; identificador SQL de migration validado por whitelist; `encodeURIComponent` em links do WhatsApp; prompt injection barrada antes do LLM |
 | Design inseguro | ADR por decisão, garantias no banco (constraints), falha fechada (sem clínica, nenhuma linha) |
 | Configuração incorreta | Provedores locais de chave e emissores de token recusados em produção; health falha com login superusuário; só `/demo/v1/*` exposto |
-| Componentes vulneráveis | Lock files, Dependabot semanal, revisão de dependências (moderada+), `npm audit`, CodeQL `security-extended` |
+| Componentes vulneráveis | Lock files, Dependabot com cooldown de 7 dias, revisão de dependências (moderada+), `npm audit`, CodeQL `security-extended` |
 | Falhas de identificação | JWT com escopo; token de serviço P-256 curto; sessão do Painel por token opaco de 32 bytes guardado como hash |
 | Integridade de software | Só actions oficiais; imagens por commit; deploy com aprovação e rollback |
 | Log e monitoramento | Logs estruturados sem PII, trilha de auditoria HMAC, alarme por issue quando a produção falha |
@@ -37,7 +37,8 @@ atualizado: 2026-10-26
 
 ## Supply chain
 
-- Restore travado por lock file; versões centralizadas; Dependabot agrupado.
+- Restore travado por lock file; versões centralizadas; Dependabot agrupado, com cooldown de 7 dias (versão comprometida costuma sair do registro antes).
+- Auto-merge do Dependabot só de baixo risco e só depois dos checks; troca de mantenedores, commit sem assinatura ou de outra pessoa e action de terceiros vão para revisão ([pipelines](../pipelines/README.md#dependabot-e-auto-merge-2026-10-30)).
 - Revisão de dependências bloqueia GPL-3.0 e AGPL-3.0 (imagens AGPL só sem modificação e fora do produto distribuído).
 - Licença de cada pacote novo conferida no pacote publicado; aviso em `THIRD-PARTY-NOTICES.md` quando a licença exige.
 - Workflows com `permissions: contents: read` no topo, `persist-credentials: false`, job com escrita isolado e mínimo.

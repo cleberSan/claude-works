@@ -7,8 +7,8 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 
 - [ambiente-cloud.md](memorias/ambiente-cloud.md) ~900: Armadilhas do container do Claude Code na nuvem e como rodar build, testes e E2E dos três projetos nele.
 - [convencoes-de-trabalho.md](memorias/convencoes-de-trabalho.md) ~1,0k: Como o trabalho anda - projeto no Claude, uma thread por fase, cards de decisão, PRs, ordem de merge, entrega de textos.
-- [decisoes.md](memorias/decisoes.md) ~2,0k: Linha do tempo das decisões do Cleber em todos os projetos, com o porquê e onde estão registradas.
-- [licoes-aprendidas.md](memorias/licoes-aprendidas.md) ~1,2k: Lições técnicas que custaram tempo (cobertura, Polly, CI, Oracle, cookies, LLM, imagens, Cloudflare) para não repetir.
+- [decisoes.md](memorias/decisoes.md) ~2,1k: Linha do tempo das decisões do Cleber em todos os projetos, com o porquê e onde estão registradas.
+- [licoes-aprendidas.md](memorias/licoes-aprendidas.md) ~1,6k: Lições técnicas que custaram tempo (cobertura, Polly, CI, Dependabot, Oracle, cookies, LLM, imagens, Cloudflare) para não repetir.
 - [perfil-e-preferencias.md](memorias/perfil-e-preferencias.md) ~1,1k: Quem é o Cleber (só fatos públicos), como ele quer as respostas e o que é decisão dele.
 
 ## Projetos (`projetos/`)
@@ -17,10 +17,10 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 - [careflow/convencoes.md](projetos/careflow/convencoes.md) ~2,0k: Convenções de código, banco, testes e cobertura do CareFlow, mais como rodar local e onde ficam as chaves de desenvolvimento.
 - [careflow/fases.md](projetos/careflow/fases.md) ~1,9k: As fases 0 a 10 do CareFlow - entrega, decisões do Cleber, PRs nos dois repositórios, ADR e o que ficou para depois.
 - [careflow/operacao.md](projetos/careflow/operacao.md) ~1,4k: Operação da demonstração do CareFlow - hospedagem Oracle Always Free, provisionamento, robô da A1, deploy, backup, interruptor e o que falta o Cleber fazer.
-- [careflow/README.md](projetos/careflow/README.md) ~1,9k: CareFlow, o projeto vitrine - o que é, estado atual, estrutura do repositório, ADRs e por onde começar.
+- [careflow/README.md](projetos/careflow/README.md) ~2,0k: CareFlow, o projeto vitrine - o que é, estado atual, estrutura do repositório, ADRs e por onde começar.
 - [linkedin.md](projetos/linkedin.md) ~600: Presença no LinkedIn - o que já foi publicado sobre o CareFlow, onde estão os textos e vídeos, limites e regras para novos posts.
-- [lojinha-da-lua.md](projetos/lojinha-da-lua.md) ~1,8k: lojinha-da-lua, catálogo de uma loja real com pedido pelo WhatsApp - stack, rotas, regras de conteúdo da loja, ADRs, deploy na Cloudflare e tarefas comuns.
-- [portfolio-web.md](projetos/portfolio-web.md) ~2,6k: portfolio-web, o site pessoal em Next.js 16 - rotas, onde fica cada conteúdo, visual, testes, deploy na Vercel e tarefas comuns.
+- [lojinha-da-lua.md](projetos/lojinha-da-lua.md) ~1,9k: lojinha-da-lua, catálogo de uma loja real com pedido pelo WhatsApp - stack, rotas, regras de conteúdo da loja, ADRs, deploy na Cloudflare e tarefas comuns.
+- [portfolio-web.md](projetos/portfolio-web.md) ~2,8k: portfolio-web, o site pessoal em Next.js 16 - rotas, onde fica cada conteúdo, visual, testes, deploy na Vercel e tarefas comuns.
 
 ## Stacks (`stacks/`)
 
@@ -30,7 +30,7 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 - [ia-aplicada.md](stacks/ia-aplicada.md) ~800: Como o ecossistema usa LLM em produto (triagem do CareFlow) e no desenvolvimento - modelo, SDK, guardrails, gravações, avaliação e custos.
 - [nextjs.md](stacks/nextjs.md) ~900: Padrão Next.js do ecossistema - Next 16 com App Router, conteúdo tipado, MDX, CSP sem nonce, SEO, acessibilidade e testes.
 - [observabilidade.md](stacks/observabilidade.md) ~600: Padrão de observabilidade - OpenTelemetry ponta a ponta, trace atravessando o broker, métricas de negócio, redação de PII e stack local gratuita.
-- [seguranca.md](stacks/seguranca.md) ~1,2k: Padrões de segurança aplicados nos projetos - OWASP Top 10 na prática, cabeçalhos e CSP, isolamento, criptografia, segredos, supply chain e LGPD.
+- [seguranca.md](stacks/seguranca.md) ~1,3k: Padrões de segurança aplicados nos projetos - OWASP Top 10 na prática, cabeçalhos e CSP, isolamento, criptografia, segredos, supply chain e LGPD.
 - [testes.md](stacks/testes.md) ~1,0k: Estratégia de testes do ecossistema - pirâmide por stack, cobertura de 80% medida certo, concorrência, segurança, E2E com axe e o que cada camada prova.
 
 ## APIs (`apis/`)
@@ -72,8 +72,9 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 - [ci-node.yml](pipelines/ci-node.yml) ~700: CI Node (Next.js ou Astro) no padrão dos sites - audit, format, lint, tipos, cobertura 80%, build, E2E com Playwright e revisão de dependências.
 - [codeql.yml](pipelines/codeql.yml) ~300: CodeQL security-extended para a linguagem do repositório e para os próprios workflows, em push, PR e semanalmente.
 - [conferencia-producao.yml](pipelines/conferencia-producao.yml) ~800: Roda a suíte E2E todo dia contra o site publicado e abre (ou comenta) uma issue quando a execução agendada falha.
-- [dependabot.yml](pipelines/dependabot.yml) ~200: Dependabot semanal agrupado para npm, NuGet e GitHub Actions, no padrão dos repositórios.
-- [README.md](pipelines/README.md) ~1,0k: Portões de qualidade e regras dos workflows do GitHub Actions, checks obrigatórios por repositório e os modelos prontos para copiar.
+- [dependabot-auto-merge.yml](pipelines/dependabot-auto-merge.yml) ~1,7k: Auto-merge criterioso dos PRs do Dependabot: patch e minor comuns entram sozinhos depois dos checks; major, minor de framework e sinal estranho ficam para revisão.
+- [dependabot.yml](pipelines/dependabot.yml) ~600: Dependabot com cooldown de 7 dias e grupos para npm, NuGet e GitHub Actions, no padrão dos repositórios (README desta pasta).
+- [README.md](pipelines/README.md) ~1,8k: Portões de qualidade e regras dos workflows do GitHub Actions, checks obrigatórios por repositório, Dependabot com auto-merge criterioso e os modelos prontos para copiar.
 
 ## Fluxos de agentes (`agents/`)
 
@@ -114,4 +115,4 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 - [adr/0001-base-em-camadas-e-publica.md](docs/adr/0001-base-em-camadas-e-publica.md) ~700: ADR-0001 da base - leitura em camadas para gastar poucos tokens, conteúdo só público, português, índice gerado e validador sem dependências no CI.
 - [glossario.md](docs/glossario.md) ~1,0k: Glossário do ecossistema - termos de domínio, segurança, mensageria e operação usados nos projetos, com o nome no código.
 
-Total: 75 arquivos, ~61,2k tokens. Ler tudo raramente compensa.
+Total: 76 arquivos, ~65,2k tokens. Ler tudo raramente compensa.

@@ -1,6 +1,6 @@
 ---
 resumo: portfolio-web, o site pessoal em Next.js 16 - rotas, onde fica cada conteúdo, visual, testes, deploy na Vercel e tarefas comuns.
-atualizado: 2026-10-27
+atualizado: 2026-10-30
 fontes:
   - https://github.com/cleberSan/portfolio-web
   - https://portfolio-web-psi-rust.vercel.app
@@ -67,6 +67,7 @@ Também: `sitemap.ts` (com alternates de idioma), `robots.ts`, imagens Open Grap
 | 0004 | Diário em MDX com registro tipado e 404 real (`proxy.ts`), `ensureStatic` |
 | 0005 | Vercel pela integração com GitHub; domínio detectado por `VERCEL_PROJECT_PRODUCTION_URL`; Node 22 e `npm ci` pelo `vercel.json` |
 | 0006 | Versão em inglês com um layout raiz por idioma (home e Sobre) |
+| 0007 | Dependabot com cooldown de 7 dias e auto-merge só de baixo risco (patch/minor comuns, actions oficiais); major e minor de Next/React/Tailwind manuais |
 
 ## Testes e CI
 
@@ -76,6 +77,7 @@ Também: `sitemap.ts` (com alternates de idioma), `robots.ts`, imagens Open Grap
 - Um teste confere que cada portão do painel "Pipeline deste site" existe nos workflows (`src/content/engineering.ts`).
 - O site não é currículo online: não fala em busca de vaga nem disponibilidade (pedido do Cleber, 2026-10-27); testes de unidade barram esse texto em português e em inglês.
 - A seção da home se chama "Atuação", não "Serviços": o site não oferece serviço, e a Vercel Hobby é de uso não comercial.
+- Dependabot: npm segunda 5h (minor e patch num grupo só), actions quarta 5h; o workflow `dependabot-auto-merge.yml` liga o auto-merge do que é de baixo risco e o GitHub mescla depois dos checks (ADR-0007, [pipelines](../pipelines/README.md#dependabot-e-auto-merge-2026-10-30)). O merge automático não dispara CI nem CodeQL de `push` na `main`.
 - CI "Lint, tipos, testes e build": `npm ci` → `npm audit --omit=dev --audit-level=moderate` → format → lint → typecheck (`next typegen && tsc`) → cobertura → build → E2E. Revisão de dependências bloqueia severidade moderada e GPL-3.0/AGPL-3.0 em runtime.
 
 ## Variáveis

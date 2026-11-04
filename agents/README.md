@@ -1,6 +1,6 @@
 ---
 resumo: Fluxos de agentes autônomos do ecossistema - quais agentes existem, como se encadeiam, onde o humano aprova e quando parar.
-atualizado: 2026-10-26
+atualizado: 2026-11-04
 ---
 
 # Fluxos de agentes
@@ -37,7 +37,7 @@ Um **fluxo** encadeia agentes de responsabilidade única. A sessão principal é
 ## Regras de todo fluxo
 
 1. **Portões humanos:** custo, licença, escopo, troca de biblioteca, passo irreversível e merge são do Cleber. O fluxo para, prepara um card com opção recomendada e segue no que não depende disso.
-2. **Entrada mínima:** cada agente recebe o objetivo, os caminhos e a parte da base que importa, não o histórico inteiro.
+2. **Entrada mínima:** cada agente recebe o objetivo, os caminhos e a parte da base que importa, não o histórico inteiro. Com spec, a entrada é a spec, o plano e a tarefa da vez ([SDD](../memorias/spec-driven-development.md)).
 3. **Saída estruturada:** cada agente devolve no formato da definição; o orquestrador não reinterpreta achados.
 4. **Parada:** dois ciclos de correção sem CI verde, achado bloqueante de segurança sem solução clara, ou fato externo não confirmado → parar e relatar.
 5. **Nada sai do repositório sem o Cleber:** sem publicar post, sem e-mail, sem mudar produção.

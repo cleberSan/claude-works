@@ -6,10 +6,11 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 ## Memórias (`memorias/`)
 
 - [ambiente-cloud.md](memorias/ambiente-cloud.md) ~900: Armadilhas do container do Claude Code na nuvem e como rodar build, testes e E2E dos três projetos nele.
-- [convencoes-de-trabalho.md](memorias/convencoes-de-trabalho.md) ~1,0k: Como o trabalho anda - projeto no Claude, uma thread por fase, cards de decisão, PRs, ordem de merge, entrega de textos.
-- [decisoes.md](memorias/decisoes.md) ~2,1k: Linha do tempo das decisões do Cleber em todos os projetos, com o porquê e onde estão registradas.
+- [convencoes-de-trabalho.md](memorias/convencoes-de-trabalho.md) ~1,3k: Como o trabalho anda - projeto no Claude, uma thread por fase, pedido novo com SDD, cards de decisão, PRs, ordem de merge, entrega de textos.
+- [decisoes.md](memorias/decisoes.md) ~2,2k: Linha do tempo das decisões do Cleber em todos os projetos, com o porquê e onde estão registradas.
 - [licoes-aprendidas.md](memorias/licoes-aprendidas.md) ~1,6k: Lições técnicas que custaram tempo (cobertura, Polly, CI, Dependabot, Oracle, cookies, LLM, imagens, Cloudflare) para não repetir.
 - [perfil-e-preferencias.md](memorias/perfil-e-preferencias.md) ~1,1k: Quem é o Cleber (só fatos públicos), como ele quer as respostas e o que é decisão dele.
+- [spec-driven-development.md](memorias/spec-driven-development.md) ~1,7k: Spec-Driven Development no ecossistema - quando vale (direto, leve, completo), spec, plano e tarefas em docs/specs, critérios de aceite CA-NN, portão do Cleber e rastreio até o teste.
 
 ## Projetos (`projetos/`)
 
@@ -17,7 +18,7 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 - [careflow/convencoes.md](projetos/careflow/convencoes.md) ~2,0k: Convenções de código, banco, testes e cobertura do CareFlow, mais como rodar local e onde ficam as chaves de desenvolvimento.
 - [careflow/fases.md](projetos/careflow/fases.md) ~1,9k: As fases 0 a 10 do CareFlow - entrega, decisões do Cleber, PRs nos dois repositórios, ADR e o que ficou para depois.
 - [careflow/operacao.md](projetos/careflow/operacao.md) ~1,4k: Operação da demonstração do CareFlow - hospedagem Oracle Always Free, provisionamento, robô da A1, deploy, backup, interruptor e o que falta o Cleber fazer.
-- [careflow/README.md](projetos/careflow/README.md) ~2,0k: CareFlow, o projeto vitrine - o que é, estado atual, estrutura do repositório, ADRs e por onde começar.
+- [careflow/README.md](projetos/careflow/README.md) ~2,1k: CareFlow, o projeto vitrine - o que é, estado atual, estrutura do repositório, ADRs e por onde começar.
 - [linkedin.md](projetos/linkedin.md) ~600: Presença no LinkedIn - o que já foi publicado sobre o CareFlow, onde estão os textos e vídeos, limites e regras para novos posts.
 - [lojinha-da-lua.md](projetos/lojinha-da-lua.md) ~1,9k: lojinha-da-lua, catálogo de uma loja real com pedido pelo WhatsApp - stack, rotas, regras de conteúdo da loja, ADRs, deploy na Cloudflare e tarefas comuns.
 - [portfolio-web.md](projetos/portfolio-web.md) ~2,8k: portfolio-web, o site pessoal em Next.js 16 - rotas, onde fica cada conteúdo, visual, testes, deploy na Vercel e tarefas comuns.
@@ -58,13 +59,17 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 - [cartao-projeto.md](templates/cartao-projeto.md) ~300: Modelo de cartão de projeto para projetos/ (o que é, estado, stack, rotas ou serviços, ADRs, testes, deploy, tarefas comuns, pendências). Variáveis NOME, RESUMO, DATA, REPO.
 - [checklist-api.md](templates/checklist-api.md) ~600: Checklist para um serviço ou endpoint .NET novo - contrato, autorização, multi-tenant, erros, idempotência, dados, mensageria, observabilidade e testes.
 - [checklist-site.md](templates/checklist-site.md) ~700: Checklist para um site novo no padrão do ecossistema - segurança, SEO, acessibilidade, testes, privacidade, deploy gratuito e conferência em produção.
-- [decisoes-fase.md](templates/decisoes-fase.md) ~300: Modelo do fase-N-decisoes.md (pasta do projeto) - fatos verificados, perguntas em card, respostas, entrega e riscos. Variáveis FASE, TITULO, DATA.
+- [decisoes-fase.md](templates/decisoes-fase.md) ~400: Modelo do fase-N-decisoes.md (pasta do projeto), opcional desde o SDD - só o contexto que não pode ir à spec pública: fatos, cards, respostas, entrega e riscos. Variáveis FASE, TITULO, DATA.
+- [plano.md](templates/plano.md) ~400: Modelo de plano (SDD) para docs/specs/NNNN-titulo/plano.md - como atender a spec: contexto, fatos, desenho, contratos, segurança, observabilidade, teste por critério, riscos e rollback. Variáveis DATA, NUMERO, TITULO.
 - [post-diario.mdx](templates/post-diario.mdx) ~400: Modelo de post do diário do portfolio-web (MDX começando em ##, seções do problema ao próximo passo) e a entrada em posts.ts. Variáveis FASE, SLUG, TITULO, DESCRICAO, DATA.
 - [prompt-fase.md](templates/prompt-fase.md) ~400: Modelo do prompt-fase-N.md que o Cleber cola no chat do projeto para abrir a próxima fase. Variáveis PROJETO, FASE, TITULO.
-- [pull-request.md](templates/pull-request.md) ~300: Corpo de PR no padrão dos repositórios (Antes, Depois, Como, Checklist), com riscos, testes e ordem de merge.
+- [pull-request.md](templates/pull-request.md) ~400: Corpo de PR no padrão dos repositórios (Spec, Antes, Depois, Como, Checklist), com riscos, testes por critério de aceite e ordem de merge.
 - [readme-repositorio.md](templates/readme-repositorio.md) ~300: Modelo de README de repositório novo no padrão do ecossistema (badges, propósito, o que tem, qualidade, decisões, como rodar, licença). Variáveis NOME, DONO, DESCRICAO, STACK.
 - [security.md](templates/security.md) ~200: SECURITY.md padrão para repositório novo (reporte privado, escopo, práticas), usado pelo iniciar-repositorio. Variáveis DONO, NOME.
 - [skill.md](templates/skill.md) ~200: Modelo de SKILL.md para .claude/skills/<nome>/ (front matter name e description, quando usar, passos, regras, saída). Variáveis NOME, DESCRICAO.
+- [spec.md](templates/spec.md) ~700: Modelo de spec (SDD) para docs/specs/NNNN-titulo/spec.md - problema, fora de escopo, critérios de aceite CA-NN em EARS, não funcionais e perguntas abertas. Variáveis DATA, NIVEL, NUMERO, TITULO.
+- [specs-readme.md](templates/specs-readme.md) ~400: README de docs/specs/ para repositório novo - o que é uma spec, quando ela é exigida, estrutura e ciclo; usado pelo iniciar-repositorio. Variáveis NOME.
+- [tarefas.md](templates/tarefas.md) ~300: Modelo de tarefas (SDD) para docs/specs/NNNN-titulo/tarefas.md - lista ordenada, uma tarefa por commit, cada uma com prova e critérios cobertos. Variáveis NUMERO, TITULO.
 
 ## Pipelines (`pipelines/`)
 
@@ -81,7 +86,7 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 - [fluxo-atualizar-base.md](agents/fluxo-atualizar-base.md) ~300: Fluxo para manter esta base atualizada depois de PRs mesclados, decisões e lições, inclusive como rotina agendada.
 - [fluxo-conteudo.md](agents/fluxo-conteudo.md) ~300: Fluxo para produzir conteúdo público (post do diário, LinkedIn, resposta a comentário) com fatos conferidos, limites de caracteres e entrega em arquivo.
 - [fluxo-correcao-bug.md](agents/fluxo-correcao-bug.md) ~300: Fluxo de correção de bug sem suposição - evidência, hipóteses por probabilidade, reprodução por teste, causa raiz, correção, regressão e prevenção.
-- [fluxo-fase.md](agents/fluxo-fase.md) ~600: Fluxo de uma fase de projeto com agentes - pesquisa, cards, implementação no careflow, QA, segurança, revisão, PR do site, conteúdo e atualização da base.
+- [fluxo-fase.md](agents/fluxo-fase.md) ~700: Fluxo de uma fase de projeto com agentes - pesquisa, spec aprovada, cards, implementação no careflow, QA, segurança, revisão, PR do site, conteúdo e atualização da base.
 - [fluxo-revisao-pr.md](agents/fluxo-revisao-pr.md) ~300: Fluxo de revisão de PR com agentes em paralelo (segurança, Staff, QA), consolidação de achados e correção antes de pedir a revisão do Cleber.
 - [README.md](agents/README.md) ~900: Fluxos de agentes autônomos do ecossistema - quais agentes existem, como se encadeiam, onde o humano aprova e quando parar.
 
@@ -90,16 +95,17 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 - [analise-staff](.claude/skills/analise-staff/SKILL.md) ~500: Estrutura uma resposta de implementação no padrão que o Cleber pede (Análise, Riscos, Arquitetura, Implementação, Segurança, Testes, Performance, Code Review, Conclusão) com trade-offs e uma recomendação.
 - [investigar-bug](.claude/skills/investigar-bug/SKILL.md) ~400: Investiga e corrige bug sem suposição - evidência, hipóteses por probabilidade, reprodução por teste, causa raiz, correção, regressão e prevenção - no padrão que o Cleber pede.
 - [kb-atualizar](.claude/skills/kb-atualizar/SKILL.md) ~600: Atualiza a base claude-works do Cleber depois de uma entrega, decisão ou lição - fato no arquivo certo, índice, validação e PR. Use ao fim de cada fase ou PR relevante e quando ele pedir para registrar algo.
-- [nova-fase](.claude/skills/nova-fase/SKILL.md) ~600: Conduz uma fase de projeto do Cleber (ex.: fase 10 do CareFlow) do prompt colado até os PRs no careflow e no site, com cards de decisão, ADR, post do diário e o prompt da fase seguinte.
+- [nova-fase](.claude/skills/nova-fase/SKILL.md) ~700: Conduz uma fase de projeto do Cleber (ex.: fase 10 do CareFlow) do prompt colado até os PRs no careflow e no site, com spec aprovada (SDD completo), cards de decisão, ADR, post do diário e o prompt da fase seguinte.
 - [novo-adr](.claude/skills/novo-adr/SKILL.md) ~500: Escreve um ADR no formato dos repositórios do Cleber (docs/adr/NNNN-titulo.md com Status, Data, Contexto, Decisão, Alternativas, Consequências). Use quando uma decisão de arquitetura, segurança, dados ou operação for tomada ou mudar.
-- [novo-repositorio](.claude/skills/novo-repositorio/SKILL.md) ~500: Prepara um repositório novo do Cleber no padrão do ecossistema - CI, CodeQL, Dependabot, template de PR, CODEOWNERS, ADR-0000, README, CONTRIBUTING e SECURITY - e lista o que só ele pode configurar no GitHub.
+- [novo-repositorio](.claude/skills/novo-repositorio/SKILL.md) ~600: Prepara um repositório novo do Cleber no padrão do ecossistema - CI, CodeQL, Dependabot, template de PR, CODEOWNERS, ADR-0000, docs/specs, README, CONTRIBUTING e SECURITY - e lista o que só ele pode configurar no GitHub.
+- [sdd](.claude/skills/sdd/SKILL.md) ~900: Conduz um pedido novo de implementação do Cleber por Spec-Driven Development - classifica o nível (direto, leve, completo), escreve spec, plano e tarefas em docs/specs do repositório, pede o OK quando o nível exige, implementa por tarefa e liga cada critério de aceite a um teste.
 - [texto-linkedin](.claude/skills/texto-linkedin/SKILL.md) ~400: Escreve post ou resposta de comentário para o LinkedIn do Cleber com fatos conferidos nos repositórios, dentro do limite de caracteres, entregue como arquivo só com o texto.
 
 ## Subagentes do Claude Code (`.claude/agents/`)
 
 - [curador-kb](.claude/agents/curador-kb.md) ~400: Atualiza a base claude-works depois de uma entrega - estado do projeto, decisões, lições, APIs, índice - mantendo arquivos curtos, públicos e validados. Use ao fim de cada fase, PR relevante ou decisão do Cleber.
 - [guardiao-seguranca](.claude/agents/guardiao-seguranca.md) ~500: Revisão de segurança e privacidade de um diff - segredos, dados pessoais, OWASP Top 10, autorização por clínica, RLS, CSP e cabeçalhos, supply chain e licenças. Bloqueia o PR quando acha problema real.
-- [implementador](.claude/agents/implementador.md) ~500: Implementa uma mudança com escopo fechado num dos repositórios seguindo as convenções da base (fatias verticais, Result, RLS, testes AAA, cobertura 80%), roda build e testes e devolve o diff pronto para revisão.
+- [implementador](.claude/agents/implementador.md) ~600: Implementa uma mudança com escopo fechado num dos repositórios seguindo as convenções da base (fatias verticais, Result, RLS, testes AAA, cobertura 80%), roda build e testes e devolve o diff pronto para revisão.
 - [pesquisador-fatos](.claude/agents/pesquisador-fatos.md) ~500: Levanta e confere fatos externos com fonte e data (limites de plano gratuito, licenças de pacotes, preços, versões, mudanças de API) antes de uma decisão. Use antes de cards de decisão e de ADRs.
 - [qa-destrutivo](.claude/agents/qa-destrutivo.md) ~500: Tenta quebrar uma mudança antes do PR - concorrência, entrada inválida, acesso de outra clínica, falha de dependência, regressão - e escreve os testes que provam o problema. Use depois do implementador e antes da revisão.
 - [redator-tecnico](.claude/agents/redator-tecnico.md) ~400: Escreve post do diário do site, texto para o LinkedIn ou resposta a comentário a partir de fatos conferidos no código e nos ADRs, dentro dos limites de caracteres. Use no fim de fase ou quando o Cleber pedir texto para publicar.
@@ -107,12 +113,13 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 
 ## Scripts (`scripts/`)
 
-- [README.md](scripts/README.md) ~1,4k: Scripts da base (validar, indice, tokens, modelo, iniciar-repositorio, ambiente-cloud) e módulos de utils/ - uso, opções, códigos de saída e como estender.
+- [README.md](scripts/README.md) ~1,5k: Scripts da base (validar, indice, tokens, modelo, iniciar-repositorio, ambiente-cloud) e módulos de utils/ - uso, opções, códigos de saída e como estender.
 
 ## Docs (`docs/`)
 
 - [adr/0000-registrar-decisoes-com-adr.md](docs/adr/0000-registrar-decisoes-com-adr.md) ~200: ADR-0000 da base - decisões sobre a própria base viram ADR, no mesmo formato dos outros repositórios.
 - [adr/0001-base-em-camadas-e-publica.md](docs/adr/0001-base-em-camadas-e-publica.md) ~700: ADR-0001 da base - leitura em camadas para gastar poucos tokens, conteúdo só público, português, índice gerado e validador sem dependências no CI.
-- [glossario.md](docs/glossario.md) ~1,0k: Glossário do ecossistema - termos de domínio, segurança, mensageria e operação usados nos projetos, com o nome no código.
+- [adr/0002-spec-driven-development.md](docs/adr/0002-spec-driven-development.md) ~1,8k: ADR-0002 da base - pedido novo segue Spec-Driven Development (spec, plano, tarefas, código) em docs/specs dos repositórios, em três níveis, com modelos e skill próprios e sem ferramenta nova.
+- [glossario.md](docs/glossario.md) ~1,1k: Glossário do ecossistema - termos de domínio, segurança, mensageria e operação usados nos projetos, com o nome no código.
 
-Total: 76 arquivos, ~65,2k tokens. Ler tudo raramente compensa.
+Total: 83 arquivos, ~73,0k tokens. Ler tudo raramente compensa.

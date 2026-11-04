@@ -22,6 +22,7 @@ Base de conhecimento do ecossistema de desenvolvimento de Cleber Costa Santos. C
   - Custo zero: hospedagem e serviços gratuitos, sem risco de cobrança. Nada pago, upgrade de conta, licença restritiva, troca de biblioteca ou mudança de escopo sem perguntar antes, com uma opção recomendada.
   - Segredo só em GitHub secrets ou cofre do provedor. Nunca pedir chave ou senha no chat; o Claude não entra nas contas dele.
   - Toda decisão de arquitetura, segurança, dados ou operação vira ADR (`docs/adr/NNNN-titulo.md`).
+  - Pedido novo de implementação segue **SDD**: spec → plano → tarefas → código, em `docs/specs/NNNN-titulo/` do repositório. Nível direto (só PR), leve (só `spec.md`) ou completo (com OK do Cleber na spec antes de codar), pelos gatilhos de [memorias/spec-driven-development.md](memorias/spec-driven-development.md); skill `sdd`.
   - Só dados sintéticos; nenhuma promessa clínica ou jurídica; dado de terceiro só da fonte dele.
   - O CareFlow é **Vertical Slices + DDD** (ADR-0001). Nunca dizer que usa Clean Architecture.
   - Contato público do Cleber: LinkedIn, GitHub e o telefone/WhatsApp que ele autorizou no site (o número fica só no `src/config/site.ts` do portfolio-web, nunca aqui). E-mail e endereço, nunca.
@@ -35,7 +36,7 @@ Base de conhecimento do ecossistema de desenvolvimento de Cleber Costa Santos. C
 | `stacks/` | .NET, Next.js, Astro, testes, segurança, observabilidade, hospedagem, IA | o da tecnologia |
 | `apis/` | Padrões HTTP, catálogo do CareFlow, APIs externas | `padroes-http.md` |
 | `snippets/` | Código real dos projetos, recortado e comentado | o do padrão |
-| `templates/` | ADR, PR, prompt de fase, decisões, cartão de projeto, checklists | o do artefato |
+| `templates/` | ADR, spec, plano, tarefas, PR, prompt de fase, cartão de projeto, checklists | o do artefato |
 | `pipelines/` | Workflows do GitHub Actions prontos para copiar | `README.md` |
 | `agents/` | Fluxos de agentes autônomos (quem faz o quê, quando parar) | `README.md` |
 | `.claude/skills/`, `.claude/agents/` | Skills e subagentes que o Claude Code carrega | `INDICE.md` |

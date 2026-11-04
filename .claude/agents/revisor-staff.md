@@ -19,6 +19,7 @@ Revisar como numa PR crítica de produção e devolver achados ordenados por sev
    - **Testes:** AAA, caminho de erro, borda, concorrência, outra clínica; cobertura medida no projeto certo.
    - **Performance:** N+1, consulta sem índice, alocação em laço, chamada síncrona bloqueante, paginação.
    - **Observabilidade:** span, métrica de negócio, log útil sem PII.
+   - **Aderência à spec:** todo `CA-NN` com teste (`grep -rn "spec NNNN CA-"`), nada implementado fora da spec, spec e código dizendo a mesma coisa, status `implementada` no fim.
    - **Documentação:** ADR quando há decisão, README e cartão da base atualizados.
 3. Descarte o que é gosto pessoal sem impacto.
 

@@ -1,6 +1,6 @@
 ---
 resumo: Scripts da base (validar, indice, tokens, modelo, iniciar-repositorio, ambiente-cloud) e módulos de utils/ - uso, opções, códigos de saída e como estender.
-atualizado: 2026-10-26
+atualizado: 2026-11-04
 ---
 
 # Scripts e utils
@@ -23,6 +23,14 @@ Caminhos de destino (`modelo`, `iniciar-repositorio`) são relativos à pasta de
 
 ```bash
 npm run modelo -- adr ../careflow/docs/adr/0014-testes-de-carga.md NUMERO=0014 TITULO="Testes de carga" DATA=2026-11-02
+```
+
+Spec de um pedido no nível completo (SDD, [ADR-0002](../docs/adr/0002-spec-driven-development.md)), a pasta é criada se faltar:
+
+```bash
+npm run modelo -- spec ../careflow/docs/specs/0001-testes-de-carga/spec.md NUMERO=0001 TITULO="Testes de carga" DATA=2026-11-04 NIVEL=completo
+npm run modelo -- plano ../careflow/docs/specs/0001-testes-de-carga/plano.md NUMERO=0001 TITULO="Testes de carga" DATA=2026-11-04
+npm run modelo -- tarefas ../careflow/docs/specs/0001-testes-de-carga/tarefas.md NUMERO=0001 TITULO="Testes de carga"
 ```
 
 ## Regras do validador

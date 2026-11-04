@@ -1,6 +1,6 @@
 ---
 resumo: Linha do tempo das decisões do Cleber em todos os projetos, com o porquê e onde estão registradas.
-atualizado: 2026-10-30
+atualizado: 2026-11-04
 ---
 
 # Decisões
@@ -18,6 +18,7 @@ Decisões tomadas pelo Cleber (em geral num card com opção recomendada). O reg
 | 2026-10-26 | Base de conhecimento pública `claude-works`, em português | Economizar leitura de histórico e manter o mesmo idioma dos outros repos | [docs/adr/0001](../docs/adr/0001-base-em-camadas-e-publica.md) |
 | 2026-10-26 | `claude-works` também sob licença MIT | Mesmo padrão dos outros repositórios | [LICENSE](../LICENSE) |
 | 2026-10-30 | Dependabot sem clique a cada PR: auto-merge criterioso nos sites (major e minor de framework manuais), careflow mensal e agrupado sem auto-merge | Atualização de baixo risco esperava dias por um clique; major é onde o comportamento quebra | portfolio-web ADR-0007, lojinha ADR-0010, careflow ADR-0014 |
+| 2026-11-04 | Pedido novo segue Spec-Driven Development (spec, plano, tarefas, código) em `docs/specs/`, nos níveis direto, leve e completo, sem ferramenta nova | Mapear o fluxo inteiro antes do código e acompanhar melhor o que é feito | [docs/adr/0002](../docs/adr/0002-spec-driven-development.md), careflow ADR-0015, portfolio-web ADR-0008, lojinha ADR-0011 |
 
 ## CareFlow
 

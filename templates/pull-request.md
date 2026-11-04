@@ -1,4 +1,6 @@
-<!-- resumo: Corpo de PR no padrão dos repositórios (Antes, Depois, Como, Checklist), com riscos, testes e ordem de merge. -->
+<!-- resumo: Corpo de PR no padrão dos repositórios (Spec, Antes, Depois, Como, Checklist), com riscos, testes por critério de aceite e ordem de merge. -->
+Spec: <!-- docs/specs/NNNN-titulo/ ou "sem spec: nível direto (motivo)" -->
+
 ## Antes
 
 <!-- Como era e qual o problema, em 1 a 3 frases. -->
@@ -17,10 +19,16 @@
 
 ### Testes
 
-<!-- Unidade, integração, E2E: o que foi coberto e o que não foi (e por quê). Cobertura do CI. -->
+<!-- Unidade, integração, E2E: o que foi coberto e o que não foi (e por quê). Cobertura do CI. Com spec, a tabela critério → teste:
+| Critério | Teste |
+|---|---|
+| CA-01 | caminho/do/teste |
+-->
 
 ## Checklist
 
+- [ ] Spec linkada e com status `implementada`, ou motivo do nível direto
+- [ ] Todo critério de aceite (`CA-NN`) com teste
 - [ ] Testes cobrem cenários felizes, de erro e limites
 - [ ] Nenhum dado pessoal real, segredo ou dado sensível em código, logs ou testes
 - [ ] ADR criado ou atualizado se houve decisão arquitetural

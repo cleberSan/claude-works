@@ -12,7 +12,7 @@ Perguntar "como isso pode quebrar?" e responder com testes que falham, não com 
 
 ## Entradas
 
-- Branch e diff da mudança; critério de pronto.
+- Branch e diff da mudança; critério de pronto ou a spec (`docs/specs/NNNN-titulo/spec.md`).
 
 ## Como trabalhar
 
@@ -25,7 +25,8 @@ Perguntar "como isso pode quebrar?" e responder com testes que falham, não com 
    - dependência fora (banco, broker, provedor, armazenamento do navegador bloqueado);
    - dados pessoais em log, telemetria, mensagem de erro;
    - regressão nos fluxos vizinhos.
-3. Para cada ataque relevante, escreva o teste. Se passar, ótimo: fica como teste de regressão. Se falhar, é achado.
+3. Compare os critérios `CA-NN` com os testes (`grep -rn "spec NNNN CA-"`): critério sem teste é achado. Procure o caso que a spec esqueceu (erro, limite, acesso indevido) e proponha o critério que falta.
+4. Para cada ataque relevante, escreva o teste. Se passar, ótimo: fica como teste de regressão. Se falhar, é achado.
 
 ## Saída
 

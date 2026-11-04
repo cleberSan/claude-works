@@ -1,6 +1,6 @@
 ---
 resumo: CareFlow, o projeto vitrine - o que é, estado atual, estrutura do repositório, ADRs e por onde começar.
-atualizado: 2026-10-30
+atualizado: 2026-11-04
 fontes:
   - https://github.com/cleberSan/careflow
 ---
@@ -62,6 +62,7 @@ Serviços: **Scheduling, PatientVault, Consent, Audit, Notifications, Triage, Ri
 | [0012](https://github.com/cleberSan/careflow/blob/main/docs/adr/0012-direitos-do-titular-e-fhir.md) | Direitos do titular, crypto-shredding por paciente, Bundle FHIR R4 com Firely |
 | [0013](https://github.com/cleberSan/careflow/blob/main/docs/adr/0013-demonstracao-hospedada-na-oracle.md) | Demonstração numa VM Always Free da Oracle, Caddy, DuckDNS, OCI Vault, deploy aprovado com rollback |
 | [0014](https://github.com/cleberSan/careflow/blob/main/docs/adr/0014-atualizacao-de-dependencias-sem-auto-merge.md) | Dependabot mensal, agrupado e com cooldown, sem auto-merge (NU1004 nos lock files; merge pelo `GITHUB_TOKEN` não publicaria as imagens). PR vermelho com NU1004: `dotnet restore --force-evaluate` no branch |
+| [0015](https://github.com/cleberSan/careflow/blob/main/docs/adr/0015-especificar-antes-de-implementar.md) | SDD: mudança não trivial começa por spec em `docs/specs/` (fase sempre no nível completo); critério `CA-NN` ligado a teste ([processo](../../memorias/spec-driven-development.md)) |
 
 ## Riscos residuais registrados (ADR-0012 e ADR-0013)
 

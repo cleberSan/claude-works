@@ -5,7 +5,7 @@ atualizado: 2026-11-04
 
 # ADR-0002: Especificar antes de implementar (Spec-Driven Development)
 
-- Status: proposto
+- Status: aceito
 - Data: 2026-11-04
 
 ## Contexto
@@ -28,7 +28,7 @@ Processo completo em [memorias/spec-driven-development.md](../../memorias/spec-d
 - **Três níveis, por gatilho objetivo:** *direto* (só PR: Dependabot, texto da loja, documentação, esta base, refatoração, bug com causa clara), *leve* (só `spec.md`, com plano e tarefas curtos) e *completo* (`spec.md`, `plano.md`, `tarefas.md`) quando há fase do roadmap, contrato público, dado pessoal ou segurança, mais de um repositório ou PR, dependência, custo ou licença, ou pergunta que muda o escopo.
 - **Onde:** `docs/specs/NNNN-titulo/` no repositório da mudança principal, ao lado de `docs/adr/`; numa mudança em vários repositórios, a spec mora no do núcleo e os outros PRs linkam.
 - **Critérios de aceite** com ID `CA-NN`, em EARS em português (`QUANDO ... DEVE ...`), cada um verificável por teste; o teste carrega o comentário `spec NNNN CA-NN`.
-- **Portão do Cleber no nível completo:** a thread abre o PR em rascunho com spec e plano e só implementa depois do OK dele; enquanto espera, adianta pesquisa e o esqueleto dos testes. No leve, segue direto e ele revisa no PR. Perguntas `[A DECIDIR]` viram cards.
+- **Portão do Cleber só no nível completo** (decisão de Cleber em card, 2026-11-04, entre esperar só no completo, nunca esperar ou esperar sempre): a thread abre o PR em rascunho com spec e plano e só implementa depois do OK dele; enquanto espera, adianta pesquisa e o esqueleto dos testes. No leve, segue direto e ele revisa no PR. Perguntas `[A DECIDIR]` viram cards.
 - **Spec por mudança, não documento vivo:** `rascunho` → `aprovada` → `implementada`; depois disso só o status muda, e comportamento novo ganha spec nova. O comportamento atual está no código, nos testes e no README.
 - **Encaixe:** ADR continua para decisão; `prompt-fase-N.md` vira a entrada da spec; `fase-N-decisoes.md` fica opcional, só para contexto que não pode ir a repositório público; o template de PR ganha a linha "Spec" e o item de critérios cobertos.
 - **Sem ferramenta nova:** modelos `templates/spec.md`, `plano.md`, `tarefas.md` e `specs-readme.md`, gerados com `npm run modelo`; o `iniciar-repositorio` já cria `docs/specs/README.md`.

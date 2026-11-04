@@ -122,4 +122,4 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 - [adr/0002-spec-driven-development.md](docs/adr/0002-spec-driven-development.md) ~1,8k: ADR-0002 da base - pedido novo segue Spec-Driven Development (spec, plano, tarefas, código) em docs/specs dos repositórios, em três níveis, com modelos e skill próprios e sem ferramenta nova.
 - [glossario.md](docs/glossario.md) ~1,1k: Glossário do ecossistema - termos de domínio, segurança, mensageria e operação usados nos projetos, com o nome no código.
 
-Total: 83 arquivos, ~73,0k tokens. Ler tudo raramente compensa.
+Total: 83 arquivos, ~73,1k tokens. Ler tudo raramente compensa.

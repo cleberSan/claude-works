@@ -1,6 +1,6 @@
 ---
 resumo: portfolio-web, o site pessoal em Next.js 16 - rotas, onde fica cada conteúdo, visual, testes, deploy na Vercel e tarefas comuns.
-atualizado: 2026-10-30
+atualizado: 2026-11-04
 fontes:
   - https://github.com/cleberSan/portfolio-web
   - https://portfolio-web-psi-rust.vercel.app
@@ -68,6 +68,7 @@ Também: `sitemap.ts` (com alternates de idioma), `robots.ts`, imagens Open Grap
 | 0005 | Vercel pela integração com GitHub; domínio detectado por `VERCEL_PROJECT_PRODUCTION_URL`; Node 22 e `npm ci` pelo `vercel.json` |
 | 0006 | Versão em inglês com um layout raiz por idioma (home e Sobre) |
 | 0007 | Dependabot com cooldown de 7 dias e auto-merge só de baixo risco (patch/minor comuns, actions oficiais); major e minor de Next/React/Tailwind manuais |
+| 0008 | SDD: página ou rota nova, CSP, idioma e Painel começam por spec em `docs/specs/`; post do diário e texto do perfil são nível direto ([processo](../memorias/spec-driven-development.md)) |
 
 ## Testes e CI
 

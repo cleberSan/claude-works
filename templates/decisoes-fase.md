@@ -1,4 +1,5 @@
-<!-- resumo: Modelo do fase-N-decisoes.md (pasta do projeto) - fatos verificados, perguntas em card, respostas, entrega e riscos. Variáveis FASE, TITULO, DATA. -->
+<!-- resumo: Modelo do fase-N-decisoes.md (pasta do projeto), opcional desde o SDD - só o contexto que não pode ir à spec pública: fatos, cards, respostas, entrega e riscos. Variáveis FASE, TITULO, DATA. -->
+<!-- Desde o ADR-0002 da base, fatos, perguntas e riscos públicos ficam na spec e no plano (docs/specs/ do careflow). Use este arquivo só para o que não pode ir a repositório público. -->
 # Fase {{FASE}}: {{TITULO}} — decisões
 
 Thread "Fase {{FASE}}" (aberta em {{DATA}}). Prompt: /mnt/project-files/portfolio/prompt-fase-{{FASE}}.md.

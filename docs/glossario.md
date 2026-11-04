@@ -1,6 +1,6 @@
 ---
 resumo: Glossário do ecossistema - termos de domínio, segurança, mensageria e operação usados nos projetos, com o nome no código.
-atualizado: 2026-10-26
+atualizado: 2026-11-04
 ---
 
 # Glossário
@@ -16,11 +16,13 @@ atualizado: 2026-10-26
 | Card | Pergunta de múltipla escolha ao Cleber com opção recomendada | threads do projeto |
 | Clínica | Tenant do CareFlow | claim `tenant_id`, `app.tenant_id` |
 | Cofre | Serviço que guarda dado pessoal cifrado | `PatientVault` |
+| Critério de aceite | Comportamento verificável por teste, com ID `CA-NN`, escrito em EARS | `spec.md`, comentário `spec NNNN CA-NN` no teste |
 | Crypto-shredding | Eliminar destruindo a chave (DEK) do paciente | Rights, PatientVault |
 | DEK / KEK | Chave de dados / chave que embrulha chaves | envelope encryption |
 | Despachante | Processo que publica o Outbox | `MessageRelay`, login `<svc>_dispatcher` |
 | Diário de bordo | Posts por fase no site | `/diario`, `src/content/diario` |
 | DLQ | Fila de mensagens mortas | `careflow.{serviço}` + dead letter |
+| EARS | Notação de requisito: QUANDO, SE/ENTÃO, ENQUANTO + DEVE | critérios de aceite das specs |
 | `erasure-replay` | Reaplicar eliminações depois de restaurar backup | `POST /v1/subject-requests/{id}/erasure-replay` |
 | Exclusion constraint | Restrição GiST que impede intervalos sobrepostos | `ex_appointments_no_overlap` |
 | Fatia vertical | Caso de uso com request, handler e endpoint juntos | `Features/` |
@@ -41,5 +43,7 @@ atualizado: 2026-10-26
 | RLS | Row-Level Security do PostgreSQL por clínica | política `tenant_isolation` |
 | Robô | VM que tenta criar a A1 na Oracle | `careflow-cacador`, `a1-hunter.sh` |
 | Sala de controle | Direção visual do site | tokens em `globals.css` |
+| SDD | Spec-Driven Development: spec → plano → tarefas → código, em níveis direto, leve e completo | [memorias/spec-driven-development.md](../memorias/spec-driven-development.md) |
+| Spec | O quê e por quê de uma mudança, antes do código; registro por mudança, como o ADR | `docs/specs/NNNN-titulo/` |
 | Token de serviço | JWT curto P-256 entre serviços | `ServiceTokens`, `vault.contact.read` |
 | Triagem | Sugestão de prioridade com IA e revisão humana | `Triage`, `/v1/triages` |

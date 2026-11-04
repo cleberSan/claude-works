@@ -241,6 +241,7 @@ describe("iniciar-repositorio", () => {
     assert.doesNotMatch(dependabot, /package-ecosystem: npm/);
     assert.ok((await read("README.md")).includes("https://github.com/cleberSan/novo-servico/actions/workflows/ci.yml"));
     assert.match(await read("docs/adr/0000-registrar-decisoes-com-adr.md"), /Data: 2026-10-26/);
+    assert.match(await read("docs/specs/README.md"), /mudanças do novo-servico \(Spec-Driven Development\)/);
     for (const { target } of await planRepository(REPOSITORY_ROOT, { stack: "dotnet", name: "x", owner: "o", description: "d", date: TODAY })) {
       const content = await read(target);
       assert.doesNotMatch(content, /\{\{[A-Z_]+\}\}|^# resumo:|^<!-- resumo:|^# Copie para/m, target);

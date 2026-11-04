@@ -65,6 +65,7 @@ export async function planRepository(root, { stack, name, owner, description, da
     { target: ".github/pull_request_template.md", content: fill(await read("templates/pull-request.md"), {}, "pull-request.md") },
     { target: ".github/CODEOWNERS", content: `* @${owner}\n` },
     { target: "docs/adr/0000-registrar-decisoes-com-adr.md", content: fill(await read("templates/adr-0000.md"), { NOME: name, DATA: date }, "adr-0000.md") },
+    { target: "docs/specs/README.md", content: fill(await read("templates/specs-readme.md"), { NOME: name }, "specs-readme.md") },
     { target: "SECURITY.md", content: fill(await read("templates/security.md"), { DONO: owner, NOME: name }, "security.md") },
     {
       target: "README.md",

@@ -14,6 +14,8 @@ Pontos herdados:
 * <!-- Fase anterior (ADR-NNNN): o que ficou adiado ou o risco que esta fase precisa respeitar. -->
 * <!-- Pesquisa feita (data, thread): fatos que não devem ser refeitos. -->
 
+Comece pela spec (SDD, nível completo) em docs/specs/ do careflow, com o escopo acima como critérios de aceite, e só implemente depois do meu OK nela.
+
 Regras de sempre: só dados sintéticos, sem promessa clínica nem jurídica, PRs separados no careflow e no site (o do site entra depois do careflow), revisados por mim com CI verde e cobertura mínima de 80%. Hospedagem e serviços só gratuitos, sem risco de cobrança. Nunca peça para eu colar chave ou senha no chat. Me pergunte antes de codar se alguma decisão mudar o escopo ou trouxer custo ou licença, em especial:
 * <!-- decisão 1 que é minha, com as opções que você enxerga -->
 * <!-- decisão 2 -->

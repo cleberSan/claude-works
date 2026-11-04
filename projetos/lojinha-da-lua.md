@@ -1,6 +1,6 @@
 ---
 resumo: lojinha-da-lua, catálogo de uma loja real com pedido pelo WhatsApp - stack, rotas, regras de conteúdo da loja, ADRs, deploy na Cloudflare e tarefas comuns.
-atualizado: 2026-10-30
+atualizado: 2026-11-04
 fontes:
   - https://github.com/cleberSan/lojinha-da-lua
   - https://lojinha-da-lua.clebersan.workers.dev
@@ -59,6 +59,7 @@ e2e/                               suíte usada no CI e contra a produção (E2E
 | 0008 | Conferência diária do site no ar com a mesma suíte E2E; endereço de produção no código |
 | 0009 | Fotos dos flyers com as estampas originais (Real-ESRGAN x4 local; Lanczos onde há texto) |
 | 0010 | Dependabot com cooldown de 7 dias e auto-merge só de baixo risco; npm na segunda às 4h, antes da conferência das 6h23 |
+| 0011 | SDD: mudança no pedido, no catálogo (schema), em SEO ou CSP começa por spec em `docs/specs/`; preço, texto e foto vindos da loja são nível direto ([processo](../memorias/spec-driven-development.md)) |
 
 ## Testes, CI e produção
 

@@ -1,6 +1,6 @@
 ---
 resumo: portfolio-web, o site pessoal em Next.js 16 - rotas, onde fica cada conteúdo, visual, testes, deploy na Vercel e tarefas comuns.
-atualizado: 2026-11-04
+atualizado: 2026-11-09
 fontes:
   - https://github.com/cleberSan/portfolio-web
   - https://portfolio-web-psi-rust.vercel.app
@@ -26,6 +26,7 @@ Next.js **16.4** (App Router, Cache Components, `@next/mdx`), React **19.3**, Ty
 | `/projetos/careflow` | Arquitetura, princípios, roadmap, vídeo "O fluxo em um minuto", botões Ver demonstração e Ver código | `src/content/careflow.ts`, `public/videos/` |
 | `/projetos/careflow/painel` | Painel: replay da gravação do CI e modo ao vivo quando há backend | `src/content/painel/gravacao.json`, `src/components/painel/` |
 | `/projetos/lojinha-da-lua` | Estudo de caso da loja | `src/content/lojinha.ts` |
+| `/ecossistema` | Mapa 3D dos projetos em forma de cérebro, reproduções das gravações do CI e o assistente **Sinapse** (só em português) | `src/content/ecossistema/`, `src/components/ecossistema/` |
 | `/diario`, `/diario/<slug>` | Diário de bordo, um post por fase | `src/content/posts.ts`, `src/content/diario/*.mdx` |
 | `/stack` | Tecnologias com links para onde aparecem em código público | `src/content/stack.ts` |
 | `/sobre` | Experiência, forma de trabalho, contato | `src/components/about/`, `src/content/profile.ts` |
@@ -49,6 +50,15 @@ Também: `sitemap.ts` (com alternates de idioma), `robots.ts`, imagens Open Grap
 - Componente `Topology` (SVG com pulsos por `offset-path`, escondido com `prefers-reduced-motion`), eyebrows em mono, faixa de KPIs (7 anos, 6 setores, 7 empresas).
 - Componentes novos usam os tokens; nada de cor solta.
 
+## Ecossistema 3D (spec 0001, ADR-0009)
+
+- Spec completa em `docs/specs/0001-ecossistema-em-3d/` (20 critérios CA-NN, todos com teste); PRs #38 a #41, no ar desde 2026-11-09.
+- Três modos: **3D** (WebGL e movimento permitido), **2D** (sem WebGL, movimento reduzido ou contexto WebGL perdido) e **estático** (sem JavaScript: regiões, reproduções e respostas em texto). `src/lib/capacidades.ts` decide.
+- three.js só em `src/components/ecossistema/cena/` (regra `no-restricted-imports` no ESLint), por import dinâmico: 134 KB comprimido, nunca no pacote das outras páginas (E2E confere `window.__THREE__`). Geometria, sinais e laço de quadros são puros e testados; `cena.ts` fica fora da cobertura de unidade e é coberto pelo E2E (SwiftShader no Chromium do Playwright).
+- Reproduções: traces reais da gravação do Painel, compactados no servidor (22 KB ao navegador; a gravação tem 488 KB) + o fluxo dos agentes de [agents/fluxo-fase.md](../agents/fluxo-fase.md). Nunca dizer "ao vivo" ou "tempo real".
+- Sinapse: 16 respostas escritas e revisadas, com fonte, em `src/content/ecossistema/assistente.ts`; busca local por chaves com peso (`src/lib/assistente/buscar.ts`). Nada sai do navegador. Nunca chamar de Jarvis nem de personagem.
+- Voz: `src/lib/voz.ts`, síntese do navegador, desligada no início, só aparece com voz em português, lê só as respostas gravadas.
+
 ## Segurança
 
 - CSP completa **sem nonce** (ADR-0003), HSTS com preload, `nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy`, COOP. Fonte única: `src/config/security-headers.ts`. Snippet: [snippets/typescript/cabecalhos-e-csp.md](../snippets/typescript/cabecalhos-e-csp.md).
@@ -69,6 +79,7 @@ Também: `sitemap.ts` (com alternates de idioma), `robots.ts`, imagens Open Grap
 | 0006 | Versão em inglês com um layout raiz por idioma (home e Sobre) |
 | 0007 | Dependabot com cooldown de 7 dias e auto-merge só de baixo risco (patch/minor comuns, actions oficiais); major e minor de Next/React/Tailwind manuais |
 | 0008 | SDD: página ou rota nova, CSP, idioma e Painel começam por spec em `docs/specs/`; post do diário e texto do perfil são nível direto ([processo](../memorias/spec-driven-development.md)) |
+| 0009 | `/ecossistema`: three.js carregado só na rota, assistente de respostas gravadas (sem modelo ao vivo), voz só de leitura e sem microfone, monitor sempre escuro |
 
 ## Testes e CI
 
@@ -103,6 +114,7 @@ Também: `sitemap.ts` (com alternates de idioma), `robots.ts`, imagens Open Grap
 - **Perfil mudou:** editar `src/content/profile.ts` e `profile.en.ts` e atualizar `profile.asOf`.
 - **Texto novo na home ou no Sobre:** a versão em inglês vai em `home-text.ts`, `about-text.ts` ou no `*.en.ts` do conteúdo.
 - **Novo estudo de caso:** `src/content/<projeto>.ts` + `src/app/projetos/<projeto>/page.tsx` + `opengraph-image.tsx` + entrada em `/projetos` e no sitemap, com teste.
+- **Resposta nova do Sinapse:** entrada em `src/content/ecossistema/assistente.ts` com fonte do site ou do GitHub; o teste exige que a pergunta ache a própria resposta e que perguntas fora do assunto não achem nada. Chave fraca (palavra comum) pesa 1.
 - **Build local para E2E:** `NEXT_PUBLIC_CAREFLOW_DEMO_URL=https://demo.careflow.test npm run build && npm run test:e2e`.
 
 ## Pendências conhecidas

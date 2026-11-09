@@ -41,8 +41,8 @@ npm run modelo -- tarefas ../careflow/docs/specs/0001-testes-de-carga/tarefas.md
 | `front-matter` | arquivos de conteúdo | falta front matter ou há linha inválida |
 | `atualizado` | arquivos de conteúdo | data ausente, inválida ou no futuro |
 | `modelo` | `templates/` | variáveis `{{X}}` diferentes das declaradas em "Variáveis A, B." no resumo |
-| `skill`, `subagente` | `.claude/skills/*/SKILL.md`, `.claude/agents/*.md` | `name` diferente da pasta ou arquivo, fora do formato, ou sem `description` |
-| `tamanho` | arquivos do índice | acima de 16 KB |
+| `skill`, `subagente` | `.claude/skills/*/SKILL.md`, `.claude/agents/*.md` | `name` diferente da pasta ou arquivo, fora do formato, ou sem `description` (ou acima de 1.024 caracteres) |
+| `tamanho` | arquivos do índice | acima de 16 KB; skill e subagente acima de 4 KB |
 | `link` | todo `.md` e `.mdx` (menos modelos) | link local para arquivo ou pasta que não existe, ou para fora do repositório |
 | `dado-sensivel` | todo arquivo de texto | chave de API, token do GitHub, chave AWS ou Google, chave privada, OCID, senha literal, e-mail, celular, CPF |
 | `indice` | `INDICE.md` | ausente ou diferente do gerado |

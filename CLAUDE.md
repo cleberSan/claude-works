@@ -5,7 +5,7 @@ Base de conhecimento do ecossistema de desenvolvimento de Cleber Costa Santos. C
 ## Como ler (economia de tokens)
 
 1. Se os fatos-chave abaixo respondem, pare aqui.
-2. Senão, abra o [INDICE.md](INDICE.md) (uma linha por arquivo, gerado) e leia **só** o arquivo do assunto. Todo arquivo começa com `resumo:` e `atualizado:`; para triagem, `head -5` basta.
+2. Senão, procure o assunto no [INDICE.md](INDICE.md) (uma linha por arquivo, gerado) com `grep -i <assunto> INDICE.md`, em vez de abri-lo inteiro, e leia **só** o arquivo do assunto. Todo arquivo começa com `resumo:` e `atualizado:`; para triagem, `head -5` basta.
 3. Detalhe de decisão mora no ADR do repositório de origem; os cartões de projeto trazem o link. Abra o ADR só para citar ou conferir.
 4. Isto é um retrato com data (`atualizado:`). Antes de afirmar estado de PR, versão, deploy ou CI, confira no repositório.
 
@@ -20,6 +20,7 @@ Base de conhecimento do ecossistema de desenvolvimento de Cleber Costa Santos. C
 - **Checks obrigatórios:** careflow `Build, formatação e testes`; sites `Lint, tipos, testes e build`; todos `Revisão de dependências` e `CodeQL`. Cobertura mínima de 80%.
 - **Regras que valem sempre:**
   - Custo zero: hospedagem e serviços gratuitos, sem risco de cobrança. Nada pago, upgrade de conta, licença restritiva, troca de biblioteca ou mudança de escopo sem perguntar antes, com uma opção recomendada.
+  - Plugin, hook, servidor MCP ou skill de terceiro para o Claude só entra com ADR (ADR-0003: spec-kit, claude-mem e ECC recusados). Economia de tokens: [memorias/economia-de-tokens.md](memorias/economia-de-tokens.md).
   - Segredo só em GitHub secrets ou cofre do provedor. Nunca pedir chave ou senha no chat; o Claude não entra nas contas dele.
   - Toda decisão de arquitetura, segurança, dados ou operação vira ADR (`docs/adr/NNNN-titulo.md`).
   - Pedido novo de implementação segue **SDD**: spec → plano → tarefas → código, em `docs/specs/NNNN-titulo/` do repositório. Nível direto (só PR), leve (só `spec.md`) ou completo (com OK do Cleber na spec antes de codar), pelos gatilhos de [memorias/spec-driven-development.md](memorias/spec-driven-development.md); skill `sdd`.

@@ -1,6 +1,6 @@
 ---
 resumo: Spec-Driven Development no ecossistema - quando vale (direto, leve, completo), spec, plano e tarefas em docs/specs, critérios de aceite CA-NN, portão do Cleber e rastreio até o teste.
-atualizado: 2026-11-04
+atualizado: 2026-11-09
 ---
 
 # Spec-Driven Development (SDD)
@@ -63,10 +63,11 @@ Spec é **por mudança**, como o ADR: depois de implementada só o status muda. 
 1. **Classificar** e dizer o nível na primeira resposta da thread.
 2. **Spec** e cards das perguntas `[A DECIDIR]` que são decisão do Cleber.
 3. **Plano e tarefas** (completo).
-4. **Portão** (completo): branch com spec e plano, PR em rascunho, pedido de OK com o link. Enquanto espera, a thread adianta pesquisa e o esqueleto dos testes dos critérios, nada que dependa de pergunta aberta.
-5. **Implementar** na ordem das tarefas, uma por commit, marcando `[x]`. O checklist de progresso da thread espelha `tarefas.md`.
-6. **Mudou no caminho?** A spec muda primeiro, no mesmo branch; mudança de escopo vira card. Spec e código nunca divergem no merge.
-7. **Fechar**: todo critério com teste, CI verde, status `implementada`, PR com a tabela critério → teste.
+4. **Consistência**: numa passada, sem relatório, todo critério tem teste no plano e tarefa; nada do plano ou das tarefas fica fora da spec; todo `[A DECIDIR]` virou card. No completo, antes do portão; no leve, antes de implementar. Ideia adaptada do `/speckit-analyze` ([ADR-0003](../docs/adr/0003-ferramentas-de-terceiros-para-o-claude.md)).
+5. **Portão** (completo): branch com spec e plano, PR em rascunho, pedido de OK com o link. Enquanto espera, a thread adianta pesquisa e o esqueleto dos testes dos critérios, nada que dependa de pergunta aberta.
+6. **Implementar** na ordem das tarefas, uma por commit, marcando `[x]`. O checklist de progresso da thread espelha `tarefas.md`.
+7. **Mudou no caminho?** A spec muda primeiro, no mesmo branch; mudança de escopo vira card. Spec e código nunca divergem no merge.
+8. **Fechar**: todo critério com teste, CI verde, status `implementada`, PR com a tabela critério → teste.
 
 ## Rastreio até o teste
 

@@ -9,6 +9,8 @@ import { findPlaceholders, stripTemplateHeader } from "./templates.mjs";
 
 /** Acima disso o arquivo deixa de ser "leia só o que precisa": divida. */
 export const MAX_FILE_BYTES = 16 * 1024;
+/** Skill e subagente entram inteiros no contexto quando acionados (ADR-0003): curtos, com detalhe linkado. */
+export const MAX_CLAUDE_CODE_FILE_BYTES = 4 * 1024;
 /** O resumo vai inteiro para o índice; curto mantém o índice barato. */
 export const MAX_SUMMARY_LENGTH = 250;
 /** Limite do Claude Code para `description` de skill. */
@@ -106,17 +108,19 @@ function checkClaudeCodeFile(file, data, classification) {
 function checkIndexedFile(file, text, classification, today) {
   /** @type {Problem[]} */
   const problems = [];
+  const isClaudeCodeFile = classification.kind === "skill" || classification.kind === "subagent";
   const bytes = Buffer.byteLength(text);
-  if (bytes > MAX_FILE_BYTES) {
-    problems.push({ file, rule: "tamanho", message: `${(bytes / 1024).toFixed(1)} KB; o limite é 16 KB, divida o assunto` });
+  const size = `${(bytes / 1024).toFixed(1)} KB`;
+  if (isClaudeCodeFile && bytes > MAX_CLAUDE_CODE_FILE_BYTES) {
+    problems.push({ file, rule: "tamanho", message: `${size}; skill e subagente vão até 4 KB, mova o detalhe para memorias/ e linke` });
+  } else if (bytes > MAX_FILE_BYTES) {
+    problems.push({ file, rule: "tamanho", message: `${size}; o limite é 16 KB, divida o assunto` });
   }
 
   const { data, error } = parseFrontMatter(text);
   if (error) return [...problems, { file, line: 1, rule: "front-matter", message: error }];
 
-  if (classification.kind === "skill" || classification.kind === "subagent") {
-    return [...problems, ...checkClaudeCodeFile(file, data, classification)];
-  }
+  if (isClaudeCodeFile) return [...problems, ...checkClaudeCodeFile(file, data, classification)];
   if (classification.kind === "content" && !data) {
     return [...problems, { file, line: 1, rule: "front-matter", message: "falta o front matter com resumo e atualizado" }];
   }

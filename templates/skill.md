@@ -6,6 +6,8 @@ description: {{DESCRICAO}}
 
 # {{NOME}}
 
+<!-- Até 4 KB (o validador confere): entra inteira no contexto quando acionada. Detalhe em memorias/, com link. -->
+
 ## Quando usar
 
 - <!-- Gatilhos concretos: o pedido do usuário ou o momento do fluxo. -->

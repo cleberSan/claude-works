@@ -27,7 +27,7 @@ Esta base muda junto com os projetos: fase entregue, decisão tomada, lição ap
 
 ## Como escrever
 
-- Um assunto por arquivo, até 16 KB. Passou disso, divida e rode `npm run indice`.
+- Um assunto por arquivo, até 16 KB. Passou disso, divida e rode `npm run indice`. Skill e subagente até 4 KB: detalhe em `memorias/`, com link.
 - Front matter com `resumo:` (uma linha, até 250 caracteres; é o que vai para o índice) e `atualizado: AAAA-MM-DD`.
 - Fato, não narrativa: listas, tabelas, links. Estado volátil (CI, deploy, PR aberto) sempre com data.
 - Prefira link para o ADR ou o código do repositório de origem a copiar texto. Em `snippets/`, código real com a fonte no front matter (`fontes:`).

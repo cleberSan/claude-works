@@ -6,11 +6,12 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 ## Memórias (`memorias/`)
 
 - [ambiente-cloud.md](memorias/ambiente-cloud.md) ~900: Armadilhas do container do Claude Code na nuvem e como rodar build, testes e E2E dos três projetos nele.
-- [convencoes-de-trabalho.md](memorias/convencoes-de-trabalho.md) ~1,3k: Como o trabalho anda - projeto no Claude, uma thread por fase, pedido novo com SDD, cards de decisão, PRs, ordem de merge, entrega de textos.
-- [decisoes.md](memorias/decisoes.md) ~2,2k: Linha do tempo das decisões do Cleber em todos os projetos, com o porquê e onde estão registradas.
+- [convencoes-de-trabalho.md](memorias/convencoes-de-trabalho.md) ~1,4k: Como o trabalho anda - projeto no Claude, uma thread por fase, pedido novo com SDD, cards de decisão, PRs, ordem de merge, entrega de textos.
+- [decisoes.md](memorias/decisoes.md) ~2,3k: Linha do tempo das decisões do Cleber em todos os projetos, com o porquê e onde estão registradas.
+- [economia-de-tokens.md](memorias/economia-de-tokens.md) ~700: O que economiza tokens no ecossistema - esforço e modelo pelo nível SDD, como ler a base, tamanho de skill e da memória do projeto, e o que não instalar.
 - [licoes-aprendidas.md](memorias/licoes-aprendidas.md) ~1,6k: Lições técnicas que custaram tempo (cobertura, Polly, CI, Dependabot, Oracle, cookies, LLM, imagens, Cloudflare) para não repetir.
 - [perfil-e-preferencias.md](memorias/perfil-e-preferencias.md) ~1,1k: Quem é o Cleber (só fatos públicos), como ele quer as respostas e o que é decisão dele.
-- [spec-driven-development.md](memorias/spec-driven-development.md) ~1,7k: Spec-Driven Development no ecossistema - quando vale (direto, leve, completo), spec, plano e tarefas em docs/specs, critérios de aceite CA-NN, portão do Cleber e rastreio até o teste.
+- [spec-driven-development.md](memorias/spec-driven-development.md) ~1,8k: Spec-Driven Development no ecossistema - quando vale (direto, leve, completo), spec, plano e tarefas em docs/specs, critérios de aceite CA-NN, portão do Cleber e rastreio até o teste.
 
 ## Projetos (`projetos/`)
 
@@ -98,7 +99,7 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 - [nova-fase](.claude/skills/nova-fase/SKILL.md) ~700: Conduz uma fase de projeto do Cleber (ex.: fase 10 do CareFlow) do prompt colado até os PRs no careflow e no site, com spec aprovada (SDD completo), cards de decisão, ADR, post do diário e o prompt da fase seguinte.
 - [novo-adr](.claude/skills/novo-adr/SKILL.md) ~500: Escreve um ADR no formato dos repositórios do Cleber (docs/adr/NNNN-titulo.md com Status, Data, Contexto, Decisão, Alternativas, Consequências). Use quando uma decisão de arquitetura, segurança, dados ou operação for tomada ou mudar.
 - [novo-repositorio](.claude/skills/novo-repositorio/SKILL.md) ~600: Prepara um repositório novo do Cleber no padrão do ecossistema - CI, CodeQL, Dependabot, template de PR, CODEOWNERS, ADR-0000, docs/specs, README, CONTRIBUTING e SECURITY - e lista o que só ele pode configurar no GitHub.
-- [sdd](.claude/skills/sdd/SKILL.md) ~900: Conduz um pedido novo de implementação do Cleber por Spec-Driven Development - classifica o nível (direto, leve, completo), escreve spec, plano e tarefas em docs/specs do repositório, pede o OK quando o nível exige, implementa por tarefa e liga cada critério de aceite a um teste.
+- [sdd](.claude/skills/sdd/SKILL.md) ~1,0k: Conduz um pedido novo de implementação do Cleber por Spec-Driven Development - classifica o nível (direto, leve, completo), escreve spec, plano e tarefas em docs/specs do repositório, pede o OK quando o nível exige, implementa por tarefa e liga cada critério de aceite a um teste.
 - [texto-linkedin](.claude/skills/texto-linkedin/SKILL.md) ~400: Escreve post ou resposta de comentário para o LinkedIn do Cleber com fatos conferidos nos repositórios, dentro do limite de caracteres, entregue como arquivo só com o texto.
 
 ## Subagentes do Claude Code (`.claude/agents/`)
@@ -113,13 +114,14 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 
 ## Scripts (`scripts/`)
 
-- [README.md](scripts/README.md) ~1,5k: Scripts da base (validar, indice, tokens, modelo, iniciar-repositorio, ambiente-cloud) e módulos de utils/ - uso, opções, códigos de saída e como estender.
+- [README.md](scripts/README.md) ~1,6k: Scripts da base (validar, indice, tokens, modelo, iniciar-repositorio, ambiente-cloud) e módulos de utils/ - uso, opções, códigos de saída e como estender.
 
 ## Docs (`docs/`)
 
 - [adr/0000-registrar-decisoes-com-adr.md](docs/adr/0000-registrar-decisoes-com-adr.md) ~200: ADR-0000 da base - decisões sobre a própria base viram ADR, no mesmo formato dos outros repositórios.
 - [adr/0001-base-em-camadas-e-publica.md](docs/adr/0001-base-em-camadas-e-publica.md) ~700: ADR-0001 da base - leitura em camadas para gastar poucos tokens, conteúdo só público, português, índice gerado e validador sem dependências no CI.
 - [adr/0002-spec-driven-development.md](docs/adr/0002-spec-driven-development.md) ~1,8k: ADR-0002 da base - pedido novo segue Spec-Driven Development (spec, plano, tarefas, código) em docs/specs dos repositórios, em três níveis, com modelos e skill próprios e sem ferramenta nova.
+- [adr/0003-ferramentas-de-terceiros-para-o-claude.md](docs/adr/0003-ferramentas-de-terceiros-para-o-claude.md) ~2,0k: ADR-0003 da base - spec-kit, claude-mem e ECC avaliados para economizar tokens e recusados como ferramenta; três ideias adaptadas com texto próprio, skill até 4 KB e regra para plugin ou hook de terceiro.
 - [glossario.md](docs/glossario.md) ~1,1k: Glossário do ecossistema - termos de domínio, segurança, mensageria e operação usados nos projetos, com o nome no código.
 
-Total: 83 arquivos, ~73,1k tokens. Ler tudo raramente compensa.
+Total: 85 arquivos, ~76,3k tokens. Ler tudo raramente compensa.

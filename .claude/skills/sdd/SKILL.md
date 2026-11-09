@@ -21,11 +21,12 @@ description: Conduz um pedido novo de implementação do Cleber por Spec-Driven 
 2. **Spec:** `npm run modelo -- spec ../<repo>/docs/specs/NNNN-titulo/spec.md NUMERO=NNNN TITULO="..." DATA=AAAA-MM-DD NIVEL=leve` (ou `completo`). Preencha problema, objetivo, fora de escopo, critérios `CA-NN` em EARS (com erro, limite e acesso indevido), não funcionais com meta numérica e perguntas `[A DECIDIR]`.
 3. **Cards:** cada `[A DECIDIR]` que é decisão do Cleber (escopo, custo, licença, biblioteca, consistência) vira card com opção recomendada.
 4. **Plano e tarefas** (completo): modelos `plano` (`NUMERO`, `TITULO`, `DATA`) e `tarefas` (`NUMERO`, `TITULO`). Fatos externos com fonte e data, teste por critério, riscos e rollback, ADR quando houver decisão (`novo-adr`). Use `templates/checklist-api.md` ou `checklist-site.md`.
-5. **Portão** (completo): commit `docs(spec): <título>`, push, PR em rascunho só com spec e plano, e uma mensagem ao Cleber com o link pedindo OK. Enquanto espera: pesquisa e esqueleto dos testes dos critérios, nada que dependa de pergunta aberta. No leve, siga direto.
-6. **Aprovada:** status `aprovada` com a data do OK. Implemente na ordem de `tarefas.md`, uma tarefa por commit, marcando `[x]`. O checklist de progresso da thread espelha as tarefas.
-7. **Testes:** cada critério tem ao menos um teste com o comentário `spec NNNN CA-NN` logo acima.
-8. **Mudou no caminho:** a spec muda primeiro (commit `docs(spec)`), depois o código. Mudança de escopo vira card.
-9. **Fechar:** `grep -rn "spec NNNN CA-"` nas pastas de teste cobre todos os critérios; CI verde; status `implementada`; PR com a linha "Spec" e a tabela critério → teste; skill `kb-atualizar` se mudou fato da base.
+5. **Consistência** (antes do portão; no leve, antes de implementar): numa passada, sem relatório, confira que todo `CA-NN` tem teste no plano e tarefa em `tarefas.md` (no leve, nas seções curtas da spec), que nada do plano ou das tarefas fica fora da spec e que todo `[A DECIDIR]` virou card. Corrija antes de seguir.
+6. **Portão** (completo): commit `docs(spec): <título>`, push, PR em rascunho só com spec e plano, e uma mensagem ao Cleber com o link pedindo OK. Enquanto espera: pesquisa e esqueleto dos testes dos critérios, nada que dependa de pergunta aberta. No leve, siga direto.
+7. **Aprovada:** status `aprovada` com a data do OK. Implemente na ordem de `tarefas.md`, uma tarefa por commit, marcando `[x]`. O checklist de progresso da thread espelha as tarefas.
+8. **Testes:** cada critério tem ao menos um teste com o comentário `spec NNNN CA-NN` logo acima.
+9. **Mudou no caminho:** a spec muda primeiro (commit `docs(spec)`), depois o código. Mudança de escopo vira card.
+10. **Fechar:** `grep -rn "spec NNNN CA-"` nas pastas de teste cobre todos os critérios; CI verde; status `implementada`; PR com a linha "Spec" e a tabela critério → teste; skill `kb-atualizar` se mudou fato da base.
 
 ## Regras
 

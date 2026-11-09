@@ -1,6 +1,6 @@
 ---
 resumo: Como o trabalho anda - projeto no Claude, uma thread por fase, pedido novo com SDD, cards de decisão, PRs, ordem de merge, entrega de textos.
-atualizado: 2026-11-04
+atualizado: 2026-11-09
 ---
 
 # Convenções de trabalho
@@ -45,10 +45,11 @@ Fluxo automatizado equivalente: [agents/fluxo-fase.md](../agents/fluxo-fase.md).
 - Ele às vezes usa **Update branch** no GitHub: faça `git fetch` antes de push.
 - `merged_by` no GitHub mostra `cleberSan` mesmo quando quem agiu foi um conector na conta dele; confira o histórico antes de concluir quem fez o merge.
 - Sem actions de terceiros nos workflows; só `actions/*` e `github/*` ([pipelines](../pipelines/README.md)).
+- **Nunca afrouxar a régua para o PR passar:** lint, formatação, analisadores, cobertura mínima, checks obrigatórios e regras do validador ficam como estão; corrige-se o código. Mudar a régua é decisão do Cleber, com ADR ([ADR-0003](../docs/adr/0003-ferramentas-de-terceiros-para-o-claude.md)).
 
 ## Respostas na thread
 
-- Primeiro a resposta ou a decisão necessária; detalhe em arquivo anexo, não em mensagem longa.
+- Primeiro a resposta ou a decisão necessária; detalhe em arquivo anexo, não em mensagem longa. Como gastar menos tokens: [economia-de-tokens.md](economia-de-tokens.md).
 - Pedido de ação dele (console, Vercel, Oracle): passo a passo com link, e o trabalho que não depende disso continua.
 - Ao terminar: checklist fechado, uma mensagem com o resultado e o link.
 

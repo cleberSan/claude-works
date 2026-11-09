@@ -74,6 +74,7 @@ describe("validateRepository", () => {
 
     it("limita o arquivo a 16 KB", () => {
       assert.deepEqual(rulesWith({ "memorias/a.md": contentFile("x", "2026-10-01", "y".repeat(16 * 1024)) }), ["tamanho"]);
+      assert.deepEqual(rulesWith({ "memorias/a.md": contentFile("x", "2026-10-01", "y".repeat(8 * 1024)) }), []);
     });
   });
 
@@ -109,6 +110,16 @@ describe("validateRepository", () => {
     it("exige description dentro do limite", () => {
       assert.deepEqual(rulesWith({ ".claude/skills/novo-adr/SKILL.md": "---\nname: novo-adr\n---\n" }), ["skill"]);
       assert.deepEqual(rulesWith({ ".claude/skills/novo-adr/SKILL.md": `---\nname: novo-adr\ndescription: ${"x".repeat(1025)}\n---\n` }), ["skill"]);
+    });
+
+    it("limita skill e subagente a 4 KB", () => {
+      const skill = (body) => `---\nname: novo-adr\ndescription: Cria ADR.\n---\n${body}`;
+      assert.deepEqual(rulesWith({ ".claude/skills/novo-adr/SKILL.md": skill("y".repeat(4000)) }), []);
+      const [problem] = problemsWith({ ".claude/skills/novo-adr/SKILL.md": skill("y".repeat(4 * 1024)) });
+      assert.equal(problem.rule, "tamanho");
+      assert.match(problem.message, /skill e subagente vão até 4 KB/);
+      const agent = `---\nname: revisor\ndescription: Revisa PR.\n---\n${"y".repeat(4 * 1024)}`;
+      assert.deepEqual(rulesWith({ ".claude/agents/revisor.md": agent }), ["tamanho"]);
     });
 
     it("exige front matter", () => {

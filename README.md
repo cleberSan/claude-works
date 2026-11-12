@@ -13,6 +13,7 @@ Os projetos documentados aqui:
 | [careflow](https://github.com/cleberSan/careflow) | Projeto vitrine: agenda multi-clínica, cofre de dados de pacientes, consentimento LGPD, triagem com IA e direitos do titular. .NET 10, PostgreSQL, RabbitMQ, OpenTelemetry, dados 100% sintéticos |
 | [portfolio-web](https://github.com/cleberSan/portfolio-web) | Meu site pessoal ([no ar](https://portfolio-web-psi-rust.vercel.app)), com diário de bordo e o Painel do CareFlow. Next.js 16 |
 | [lojinha-da-lua](https://github.com/cleberSan/lojinha-da-lua) | Catálogo de uma loja com pedido pelo WhatsApp ([no ar](https://lojinha-da-lua.clebersan.workers.dev)). Astro 7 + ilha React, Cloudflare |
+| [cesta-certa](https://github.com/cleberSan/cesta-certa) | Comparador da compra do mês entre mercados próximos, feito primeiro para o celular e com os dados só no aparelho (em construção). Astro 7 + ilhas React, Worker da Cloudflare |
 
 ## Como a leitura economiza tokens
 

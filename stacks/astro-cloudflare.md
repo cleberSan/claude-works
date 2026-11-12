@@ -1,13 +1,14 @@
 ---
 resumo: Padrão Astro + Cloudflare Workers do ecossistema - site estático com ilhas React, CSP por hash, catálogo validado e deploy grátis com prévia por PR.
-atualizado: 2026-10-26
+atualizado: 2026-11-12
 fontes:
   - https://github.com/cleberSan/lojinha-da-lua
+  - https://github.com/cleberSan/cesta-certa
 ---
 
 # Astro 7 + Cloudflare Workers
 
-Referência viva: **lojinha-da-lua** ([cartão](../projetos/lojinha-da-lua.md)). Escolha quando o site é comercial (Vercel Hobby e GitHub Pages proíbem) ou quando zero JavaScript por padrão importa.
+Referências vivas: **lojinha-da-lua** ([cartão](../projetos/lojinha-da-lua.md)), só estático, e **cesta-certa** ([cartão](../projetos/cesta-certa.md)), estático com um Worker para `/api` e dados no IndexedDB. Escolha quando o site é comercial (Vercel Hobby e GitHub Pages proíbem) ou quando zero JavaScript por padrão importa.
 
 ## Versões
 
@@ -32,7 +33,9 @@ Astro 7.4, `@astrojs/react` 7, React 19, TypeScript 6 com `astro/tsconfigs/stric
 
 - `wrangler.jsonc` publica `dist/` como **arquivos estáticos de um Worker**, sem código de servidor (requisição a estático não conta no limite grátis).
 - **Workers Builds** pelo app da Cloudflare no GitHub (só o repositório selecionado): merge na `main` publica; outras branches rodam `wrangler preview` e geram link de prévia (exige `"previews": {}`).
-- `workers_dev` e `preview_urls` ligados na configuração (não no painel), para nenhum ajuste manual desligar o endereço sem PR.
+- `workers_dev` e `preview_urls` ligados na configuração (não no painel), para nenhum ajuste manual desligar o endereço sem PR. No painel a opção se chama Version URLs.
+- **Com API** (cesta-certa ADR-0001): `main` aponta para o Worker e `assets.run_worker_first: ["/api", "/api/*"]` faz só essas rotas executarem código; o resto continua estático e fora do limite grátis de requisições. A API confere a origem (`Origin` e `Sec-Fetch-Site`), responde erro em ProblemDetails com `traceId` e registra só metadados técnicos (`observability.redact_query_string`).
+- Conecte a Cloudflare depois do merge do primeiro PR de código, e pegue o endereço da prévia no comentário dela no PR ([lições](../memorias/licoes-aprendidas.md)).
 - Endereço de produção no código; variável de build só para E2E (abas Production e Previews Base não compartilham variáveis).
 - Rollback em **Deployments** no painel do Worker. Sem servidor, monitoramento é um teste agendado contra a produção.
 

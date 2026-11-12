@@ -12,7 +12,7 @@ Vale também para falhas nos scripts (ex.: um modelo que grava fora da pasta ped
 - Scripts de `scripts/` e `utils/`.
 - Workflows de `.github/workflows/`.
 
-Os projetos documentados (careflow, portfolio-web, lojinha-da-lua) têm a própria política no repositório de cada um.
+Os projetos documentados (careflow, portfolio-web, lojinha-da-lua, cesta-certa) têm a própria política no repositório de cada um.
 
 ## Práticas adotadas
 

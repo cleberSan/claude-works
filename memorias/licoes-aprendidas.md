@@ -1,6 +1,6 @@
 ---
-resumo: Lições técnicas que custaram tempo (cobertura, Polly, CI, Dependabot, Oracle, cookies, LLM, imagens, Cloudflare) para não repetir.
-atualizado: 2026-10-30
+resumo: Lições técnicas que custaram tempo (cobertura, Polly, CI, CodeQL, Dependabot, Oracle, cookies, LLM, imagens, Cloudflare, IndexedDB) para não repetir.
+atualizado: 2026-11-12
 ---
 
 # Lições aprendidas
@@ -21,6 +21,8 @@ Cada item: o sintoma, a causa e o que fazer. Origem entre parênteses.
 - Glob em diretório só do root (`/etc/careflow/env/*.env`, 0700) precisa de `sudo bash -c '...'`; o glob expande antes do `sudo`. (fase 9)
 - Action de terceiro com tag móvel é alerta do CodeQL. Use só `actions/*` e `github/*`, ou fixe por SHA. (fase 9)
 - Dependabot de TypeScript 7 quebrou `npm ci` porque `@astrojs/check` exige TS ^5 ou ^6 como peer. Não dá para aceitar sem a dependência acompanhar. (lojinha)
+- **CodeQL também analisa os testes.** `texto.replace("}", ",}")` numa fixture de teste virou alerta alto `js/incomplete-sanitization` (`replace` com texto troca só a primeira ocorrência) e reprovou o check obrigatório. Não era brecha, mas a saída é escrever sem o padrão (montar o texto com `slice` e template), não dispensar o alerta. (cesta-certa #5)
+- **Repositório novo:** repositório vazio não aceita PR (um commit vazio na `main` serve de base); o check `Revisão de dependências` falha até o Dependency graph ser ligado em Advanced Security; os checks só podem ser marcados como obrigatórios depois de rodarem uma vez, porque antes disso o nome não aparece na busca. (cesta-certa #1, #2)
 
 ## Dependabot e auto-merge
 
@@ -43,6 +45,11 @@ Cada item: o sintoma, a causa e o que fazer. Origem entre parênteses.
 - **Cookie entre sites:** `vercel.app` e `duckdns.org` são sites diferentes, então cookie `SameSite=Strict` não vai. Sessão do Painel ao vivo virou token curto em `Authorization: Bearer`, guardado só na memória da página. (fase 9)
 - **Tema sem flash** exige script inline; com CSP sem nonce, a escolha foi seguir o tema do sistema, sem botão. (portfolio-web #19)
 - **Cloudflare Workers Builds:** as abas de variáveis "Production" e "Previews Base" não compartilham valores. O endereço de produção foi para o código. `wrangler preview` exige o bloco `"previews": {}` no `wrangler.jsonc`. (lojinha ADR-0008)
+- **Cloudflare ligada antes do primeiro PR de código:** o Workers Builds construiu a `main`, que só tinha documentação, e o `npm run build` falhou por falta de `package.json`. Sem impacto, mas a prévia da branch saiu com "No Preview URL" no comentário da Cloudflare, mesmo com `workers_dev` e `preview_urls` no `wrangler.jsonc`. No PR seguinte, depois do primeiro deploy da `main`, o endereço veio. Hipótese (o painel não foi visto): essas opções só passam a valer com um deploy de produção. Saída: conectar a Cloudflare depois do merge do primeiro PR de código, ou ligar à mão em Settings > Domains & Routes. (cesta-certa #2, #5)
+- **Prévia da Cloudflare:** uma branch só é construída quando recebe commit novo depois da conexão; o endereço chega num comentário da Cloudflare no PR alguns minutos depois de o check ficar verde, então espere o comentário antes de dizer que não há prévia e nunca deduza o endereço. No painel, "Preview URLs" agora se chama **Version URLs**; a chave do `wrangler.jsonc` continua `preview_urls`. (cesta-certa #2, #5)
+- **App da Cloudflare já instalado na conta:** repositório novo precisa ser liberado no GitHub (Applications > Cloudflare Workers and Pages > Configure > Repository access) antes de aparecer no painel para importar. (cesta-certa #2)
+- **IndexedDB:** abrir um banco com versão menor que a gravada falha com `VersionError` (deploy revertido depois de uma migração); conexão aberta em outra aba bloqueia a atualização do esquema até fechar, então feche no evento `versionchange` e peça para recarregar. O Node não tem IndexedDB: o adaptador é provado no E2E, e as regras ficam atrás de uma interface com versão em memória. (cesta-certa ADR-0002)
+- **Importação que substitui tudo** deixa as outras abas com estado velho: avise por `BroadcastChannel` e recarregue a página devolvida pelo cache de voltar e avançar (`pageshow` com `persisted`). (cesta-certa ADR-0002)
 - **Next.js 16** reescreve o bloco de regras no `AGENTS.md` ao rodar `next dev`; commitar o bloco mantém a árvore limpa.
 
 ## Dados e IA

@@ -36,6 +36,7 @@
 ## Deploy
 - [ ] Hospedagem grátis compatível com o uso (comercial: Cloudflare; não comercial: Vercel Hobby)
 - [ ] Integração pelo app do provedor, só no repositório; nenhum token no GitHub
-- [ ] `main` protegido com os checks obrigatórios, sem bypass
+- [ ] App do provedor conectado depois do merge do primeiro PR de código (com a `main` só de documentação, o primeiro build falha e a prévia pode sair sem endereço)
+- [ ] Dependency graph ligado antes do primeiro PR de código; `main` protegido com os checks obrigatórios, sem bypass, depois que eles rodarem uma vez
 - [ ] Prévia por PR; rollback documentado
 - [ ] Conferência agendada contra produção quando não há backend ([pipeline](../pipelines/conferencia-producao.yml))

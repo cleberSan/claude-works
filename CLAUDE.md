@@ -16,6 +16,7 @@ Base de conhecimento do ecossistema de desenvolvimento de Cleber Costa Santos. C
   - `careflow`: projeto vitrine. Agenda multi-clínica e triagem com IA, privacidade por design (LGPD), dados 100% sintéticos. .NET 10, PostgreSQL, RabbitMQ, OpenTelemetry. Fases 0 a 9 concluídas, 10 planejada.
   - `portfolio-web`: site pessoal (Next.js 16) com diário de bordo e o Painel do CareFlow. https://portfolio-web-psi-rust.vercel.app
   - `lojinha-da-lua`: catálogo de uma loja real com pedido pelo WhatsApp (Astro 7 + ilha React, Cloudflare). https://lojinha-da-lua.clebersan.workers.dev
+  - `cesta-certa`: comparador da compra do mês entre mercados próximos, feito primeiro para o celular (Astro 7 + ilhas React, Worker da Cloudflare só para `/api`, dados só no aparelho). Em construção: spec 0001 aprovada, MVP em cinco PRs.
   - `claude-works`: esta base.
 - **Checks obrigatórios:** careflow `Build, formatação e testes`; sites `Lint, tipos, testes e build`; todos `Revisão de dependências` e `CodeQL`. Cobertura mínima de 80%.
 - **Regras que valem sempre:**

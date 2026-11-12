@@ -1,6 +1,6 @@
 ---
-resumo: Armadilhas do container do Claude Code na nuvem e como rodar build, testes e E2E dos três projetos nele.
-atualizado: 2026-10-26
+resumo: Armadilhas do container do Claude Code na nuvem (rede bloqueada, Playwright, Docker, ferramentas) e como rodar build, testes e E2E dos projetos nele.
+atualizado: 2026-11-12
 ---
 
 # Ambiente do Claude Code na nuvem
@@ -33,7 +33,8 @@ Vale para as sessões em container (claude.ai/code, threads de projeto). O scrip
 - Use `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/opt/pw-browsers/chromium`.
 - Em 2026-10-16 o portfolio-web pediu também `PLAYWRIGHT_BROWSERS_PATH` com `chromium_headless_shell-1248` como link para o binário 1194. Versões mudam; confira a mensagem de erro antes de repetir.
 - Build do portfolio-web para E2E: `NEXT_PUBLIC_CAREFLOW_DEMO_URL=https://demo.careflow.test npm run build` (senão os testes do Painel ao vivo falham).
-- Build da lojinha para E2E: `SITE_URL=http://127.0.0.1:8787 npm run build`, depois `npm run test:e2e` (sobe `wrangler dev`).
+- Build da lojinha e do cesta-certa para E2E: `SITE_URL=http://127.0.0.1:8787 npm run build`, depois `npm run test:e2e` (sobe `wrangler dev`). Refaça o build antes de cada rodada: o E2E testa o `dist/`.
+- Node 24 fica em `/opt/node24/bin`; ponha no `PATH` quando o projeto fixa `24.x` em `engines`.
 
 ## Processos
 
@@ -45,3 +46,9 @@ Vale para as sessões em container (claude.ai/code, threads de projeto). O scrip
 
 - Saída HTTPS passa por um proxy com CA própria (`/root/.ccr/ca-bundle.crt`). Não desligue verificação TLS.
 - Clones: um por vez por repositório; `git fetch origin main` antes de push a partir de clone raso.
+- Hosts que o proxy recusou (2026-11): `*.workers.dev` (produção e prévias da Cloudflare), a consulta de NFC-e da Sefaz de São Paulo, `overpass-api.de` e `tiles.openfreemap.org`. O registro do npm responde. Consequência: integração com esses serviços é testada com fixture e interceptação no E2E; o que precisa da rede de verdade roda no GitHub Actions ou é conferido pelo Cleber, por print.
+
+## Ferramentas do Claude
+
+- A ferramenta de escrita de arquivo grava `\uXXXX` como o caractere em si. Arquivo que precisa do escape literal (ex.: espaço de largura zero num teste) é escrito por heredoc do shell ou por Python.
+- Listar PRs com o corpo junto estoura o limite de saída; peça sem o corpo ou leia o arquivo salvo com um script.

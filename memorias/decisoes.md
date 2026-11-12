@@ -1,6 +1,6 @@
 ---
 resumo: Linha do tempo das decisões do Cleber em todos os projetos, com o porquê e onde estão registradas.
-atualizado: 2026-11-09
+atualizado: 2026-11-12
 ---
 
 # Decisões
@@ -69,3 +69,12 @@ Decisões tomadas pelo Cleber (em geral num card com opção recomendada). O reg
 | 2026-10-23 | "Montar pedido" no navegador com `localStorage` | Vários itens numa mensagem só | ADR-0006 |
 | 2026-10-23 | Endereço de produção no código e conferência diária do site no ar | Variáveis de build da Cloudflare não são compartilhadas entre abas | ADR-0008 |
 | 2026-10-24 | Fotos dos flyers com estampas de terceiros, risco aceito (substitui o ADR-0003) | Catálogo com imagens reais da loja | ADR-0009 |
+
+## cesta-certa
+
+| Data | Decisão | Por quê | Registro |
+|---|---|---|---|
+| 2026-11-10 | Preço só das notas fiscais de quem usa (NFC-e pelo QR Code) e do que é digitado no mercado, com fonte e data; sem raspagem. Primeiro leitor de nota: São Paulo | Não há fonte pública e gratuita de preços com API; raspar viola os termos de uso dos mercados e quebra a cada mudança no site | spec 0001 (CA-10 a CA-18); ADR-0003 planejado |
+| 2026-11-10 | Assistente com Claude Haiku 5.5 dentro do site, chamado pelo servidor e só para o dono: código de acesso, 30 perguntas por dia e 300 por mês, aceite antes de enviar a lista; visitantes veem respostas gravadas | Conversar sobre o resultado sem expor a chave; é o único custo variável do projeto, com teto | spec 0001 (CA-26 a CA-35); ADR-0004 planejado |
+| 2026-11-10 | Sem cidade fixa: o app pergunta a localização a quem abre, a base de mercados cobre o Brasil e as coordenadas não saem do aparelho | Ideia do Cleber: o app serve em qualquer cidade, e nenhum servidor fica sabendo onde a pessoa está | spec 0001 (CA-05 a CA-07); ADR-0002 |
+| 2026-11-10 | Spec 0001 aprovada ("Pode começar"), junto com a pilha (Astro + React na Cloudflare grátis) e três bibliotecas novas: `maplibre-gl`, `@anthropic-ai/sdk` e um leitor de QR Code | SDD completo: projeto novo, rotas públicas, localização e vários PRs | cesta-certa #1; ADR-0001 |

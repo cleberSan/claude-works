@@ -1,6 +1,6 @@
 ---
 resumo: cesta-certa, comparador da compra do mês entre mercados próximos - estado por PR, stack, rotas, dados só no aparelho, ADRs, deploy na Cloudflare e pendências.
-atualizado: 2026-11-12
+atualizado: 2026-11-13
 fontes:
   - https://github.com/cleberSan/cesta-certa
 ---
@@ -16,24 +16,25 @@ fontes:
 - **Sem cidade fixa:** o app pergunta a localização a quem abre, explica o motivo e só pede ao navegador depois de um toque; quem nega escolhe a cidade ou marca um ponto.
 - **Assistente com Claude pelo servidor, só para o dono:** código de acesso, 30 perguntas por dia e 300 por mês, aceite antes de enviar a lista. Chave e código só como segredos do Worker. Visitantes veem respostas gravadas.
 - Mercados vêm do OpenStreetMap (ODbL, com atribuição). A demonstração pública usa mercados e preços fictícios.
-- Bibliotecas aprovadas junto com a spec, ainda não instaladas: `maplibre-gl`, `@anthropic-ai/sdk` e um leitor de QR Code. Qualquer outra pede pergunta antes.
+- Bibliotecas aprovadas junto com a spec: `maplibre-gl` (instalada no PR 3), `@anthropic-ai/sdk` e um leitor de QR Code. Qualquer outra pede pergunta antes.
 
-## Estado (2026-11-12)
+## Estado (2026-11-13)
 
 | PR | Tarefas | Conteúdo | Estado |
 |---|---|---|---|
 | #1 | T00 | Spec, plano, tarefas e base de documentação | Mesclado 2026-11-10 |
 | #2 | T01 a T03 | CI, esqueleto Astro + Worker de `/api`, consulta da NFC-e de SP em `/nota`, ADR-0001 | Mesclado 2026-11-11; T03 aberta até o teste com nota real em produção |
 | #5 | T04, T05 | Lista em `/lista`, exportar e importar em `/dados`, ADR-0002 | Mesclado 2026-11-12 |
-| 3 de 5 | T06 a T10 | Base nacional de mercados, localização, mercado próprio, rota, mapa, ADR-0005 | Em andamento |
-| 4 de 5 | T11 a T13 | Nota fiscal no app, preço digitado, preço por unidade | A fazer |
+| #6 | T06 | Base nacional de mercados do OpenStreetMap, gerada todo mês pelo workflow `Base de mercados`, ADR-0005 | Mesclado 2026-11-12 |
+| #7 | T07 a T10 | Mercados perto do ponto em `/mercados`, mercado próprio, rota no Waze e no Google Maps, mapa sob demanda | Mesclado 2026-11-13 |
+| 4 de 5 | T11 a T13 | Nota fiscal no app, preço digitado, preço por unidade | Em andamento |
 | 5 de 5 | T14 a T19 | Objetivo e ranking, assistente, demonstração, offline, fechamento | A fazer |
 
 A ordem e o que cada tarefa cobre estão em [tarefas.md](https://github.com/cleberSan/cesta-certa/blob/main/docs/specs/0001-mvp-compra-do-mes/tarefas.md). O critério CA-04 (cópia completa dos dados) fica parcial até os armazéns de mercados e preços entrarem.
 
 ## Stack
 
-Astro **7.4** estático (`build.format: "file"`, CSP por hash), React **19** em ilhas (`client:load`), TypeScript 6 com `astro/tsconfigs/strictest`, um **Worker da Cloudflare só para `/api`** (`run_worker_first`; arquivo estático não executa código), Wrangler 4, Vitest 5, Playwright 1.64 + axe (WCAG 2.2 AA, desktop e Pixel 7), ESLint 10, Node **24**. Sem biblioteca de armazenamento. Ver [stacks/astro-cloudflare.md](../stacks/astro-cloudflare.md).
+Astro **7.4** estático (`build.format: "file"`, CSP por hash), React **19** em ilhas (`client:load`), TypeScript 6 com `astro/tsconfigs/strictest`, um **Worker da Cloudflare só para `/api`** (`run_worker_first`; arquivo estático não executa código), Wrangler 4, Vitest 5, Playwright 1.64 + axe (WCAG 2.2 AA, desktop e Pixel 7), ESLint 10, Node **24**, MapLibre GL **6.16** com estilo do OpenFreeMap (sem chave). Sem biblioteca de armazenamento. Ver [stacks/astro-cloudflare.md](../stacks/astro-cloudflare.md).
 
 ## Rotas
 
@@ -41,7 +42,9 @@ Astro **7.4** estático (`build.format: "file"`, CSP por hash), React **19** em 
 |---|---|
 | `/` | Apresentação e o que já dá para testar |
 | `/lista` | Lista do mês (ilha): criar, editar, duplicar, aviso de item repetido; `noindex` |
-| `/dados` | Exportar e importar a cópia das listas em arquivo (ilha); `noindex` |
+| `/dados` | Exportar e importar a cópia dos dados em arquivo (ilha); `noindex` |
+| `/mercados` | Ponto da busca (localização, cidade ou mapa), raio, mercados perto, mercado próprio, rota e mapa sob demanda (ilha); `noindex` |
+| `/data/mercados/*.json`, `/data/cidades.json` | Base estática de mercados por célula e lista de cidades, servidas pelo próprio site |
 | `/nota` | Página de teste da consulta de NFC-e, com diagnóstico técnico; `noindex` |
 | `/privacidade`, `/sobre` | O que fica no aparelho e o que passa pelo servidor; o projeto |
 | `POST /api/nfce/consultar` | Busca a página pública da nota na Sefaz e devolve itens e preços. Só a própria origem, lista de endereços por UF, 8 s, 512 KB, 2 redirecionamentos; erros em `application/problem+json` com `traceId` |
@@ -51,6 +54,9 @@ Astro **7.4** estático (`build.format: "file"`, CSP por hash), React **19** em 
 ```
 src/features/lista/         domínio puro da lista (lista.ts), sessão com fila (sessao.ts), telas
 src/features/dados/         cópia em arquivo: copia.ts, textos.ts, SeusDados.tsx
+src/features/mercados/      ponto e raio (ajustes.ts), base por célula (carga.ts), distância (geo.ts), mercado próprio
+src/features/mapa/          MapLibre sob demanda: contas em geojson.ts, aparência em estilo.ts, ponte em motor.ts
+src/features/rota/          links do Waze e do Google Maps
 src/features/precos/nfce/   cliente da consulta e tela de teste
 src/shared/armazenamento/   porta Banco (banco.ts), indexeddb.ts, memoria.ts, migracoes.ts, arquivo.ts
 src/shared/                 resultado, dinheiro, texto, identificador, seo, contratos/ (tipos da API)
@@ -62,10 +68,10 @@ docs/specs/, docs/adr/      spec 0001 (spec, plano, tarefas) e ADRs
 
 ## Dados no aparelho (ADR-0002)
 
-- IndexedDB `cesta-certa`, **versão 1 só com `listas` e `itens`**. `mercadosProprios` (T08), `associacoes` (T11) e `observacoesDePreco` (T12) entram cada um por migração nova no PR da sua tarefa; migração publicada não se edita.
+- IndexedDB `cesta-certa`, **versão 3**: `listas` e `itens` (v1), `ajustes` com ponto e raio, fora da cópia (v2), `mercadosProprios` (v3). `associacoes` (T11) e `observacoesDePreco` (T12) entram cada um por migração nova no PR da sua tarefa; migração publicada não se edita.
 - As fatias falam com a porta `Banco` (`lerTudo`, `aplicar`, `substituirTudo`). O adaptador do IndexedDB fica fora da cobertura de unidade e é provado pelo E2E.
 - Registro lido do aparelho ou de arquivo é reconstruído campo a campo. Leitura do aparelho tolera registro ruim (fica de fora, a tela avisa, nada é apagado); importação é rígida (um registro inválido recusa o arquivo).
-- Cópia: JSON `{ app, versao, exportadoEm, dados }`, até 5 MB, lido e gerado no aparelho. Importar substitui tudo numa transação, depois de confirmação, e avisa as outras abas por `BroadcastChannel`. Armazém novo sobe a versão do arquivo e o app continua lendo as anteriores.
+- Cópia: JSON `{ app, versao, exportadoEm, dados }` (versão 2 desde a T08), até 5 MB, lido e gerado no aparelho. Importar substitui tudo numa transação, depois de confirmação, e avisa as outras abas por `BroadcastChannel`. Armazém novo sobe a versão do arquivo e o app continua lendo as anteriores.
 - Rollback de deploy depois de uma migração: o app antigo não abre o banco mais novo e pede para recarregar; nada se perde, mas a lista fica indisponível até o app novo voltar.
 
 ## ADRs
@@ -77,13 +83,14 @@ docs/specs/, docs/adr/      spec 0001 (spec, plano, tarefas) e ADRs
 | 0002 | Dados da pessoa só no aparelho, IndexedDB com migração versionada, cópia por arquivo |
 | 0003 (planejado) | Fontes de preço do MVP: nota fiscal própria e digitado, sem raspagem |
 | 0004 (planejado) | Assistente pelo servidor, código de acesso, limites e respostas gravadas |
-| 0005 (PR 3) | Mapa com MapLibre e OpenFreeMap; base mensal do OSM em células; pedido de localização |
+| 0005 | Mapa com MapLibre e OpenFreeMap; base mensal do OSM em células; pedido de localização |
 
 ## Testes, CI e deploy
 
 - Checks obrigatórios: `Lint, tipos, testes e build`, `Revisão de dependências`, `CodeQL`. O CI roda auditoria de produção, format, lint, `astro check`, Vitest com 80%, build e E2E sobre `wrangler dev`.
 - Cada critério de aceite tem teste marcado com `// spec 0001 CA-NN`; uma tarefa por commit, cada commit verde.
-- Em 2026-11-12: 862 testes de unidade e 282 E2E (desktop e celular). Safari e Firefox não estão no CI.
+- Em 2026-11-13: 1.256 testes de unidade e 388 E2E (desktop e celular). Safari e Firefox não estão no CI.
+- O mapa abre só no toque, com o código, o worker e o CSS do MapLibre baixados nessa hora; a CSP libera `tiles.openfreemap.org` só em `/mercados`. O E2E simula o OpenFreeMap; o container não alcança o serviço real.
 - **Cloudflare Workers Builds** pelo app da Cloudflare: a `main` publica; cada branch gera prévia, e o endereço chega num comentário da Cloudflare no PR alguns minutos depois do build. Endereço de produção em `productionSiteUrl` (`src/config/site.ts`).
 - O container do Claude não alcança `workers.dev`: produção e prévia são conferidas pelo Cleber, por print.
 - Rollback: **Deployments** no painel do Worker (ver a ressalva de migração acima).
@@ -100,6 +107,8 @@ docs/specs/, docs/adr/      spec 0001 (spec, plano, tarefas) e ADRs
 ## Pendências
 
 - **Cleber:** testar `/nota` em produção com uma nota real e mandar o print (fecha a T03; o leitor de SP só foi provado com página sintética).
+- **Cleber:** proteger o `main` com ruleset (PR obrigatório, os três checks, sem bypass). Em 2026-11-13 a API pública mostrou o `main` sem regra, e a Cloudflare publica todo commit que chega a ele.
+- **Cleber:** ligar "Allow GitHub Actions to create and approve pull requests", rodar o workflow `Base de mercados` e fechar e reabrir o PR de dados para os checks rodarem.
 - **Cleber:** decidir os PRs do Dependabot abertos em 2026-11-12 (#3 agrupado, #4 TypeScript 7; `@astrojs/check` aceita só TS 5 ou 6).
 - A API ainda não tem limite de requisições; conferir o binding de rate limiting no plano grátis antes do PR 4.
 - Antes da T16, o Cleber cria a chave da Anthropic e o código de acesso como segredos do Worker (nunca no chat).

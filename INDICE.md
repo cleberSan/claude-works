@@ -27,7 +27,7 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 
 ## Stacks (`stacks/`)
 
-- [astro-cloudflare.md](stacks/astro-cloudflare.md) ~1,4k: Padrão Astro + Cloudflare Workers do ecossistema - site estático com ilhas React, CSP por hash, catálogo validado e deploy grátis com prévia por PR.
+- [astro-cloudflare.md](stacks/astro-cloudflare.md) ~1,5k: Padrão Astro + Cloudflare Workers do ecossistema - site estático com ilhas React, CSP por hash, catálogo validado e deploy grátis com prévia por PR.
 - [dotnet.md](stacks/dotnet.md) ~1,4k: Padrão .NET do ecossistema - versões, estrutura de solução, qualidade no build, Minimal APIs, EF Core com Npgsql, resiliência, mensageria e o que evitar.
 - [hospedagem-gratuita.md](stacks/hospedagem-gratuita.md) ~900: Onde hospedar de graça e sem risco de cobrança - Vercel, Cloudflare, Oracle Always Free, GitHub, DuckDNS - com limites, regras de uso e o que já foi descartado.
 - [ia-aplicada.md](stacks/ia-aplicada.md) ~800: Como o ecossistema usa LLM em produto (triagem do CareFlow) e no desenvolvimento - modelo, SDK, guardrails, gravações, avaliação e custos.

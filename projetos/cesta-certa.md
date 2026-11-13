@@ -117,5 +117,5 @@ docs/specs/, docs/adr/      spec 0001 (spec, plano, tarefas) e ADRs
 - **Cleber:** ligar "Allow GitHub Actions to create and approve pull requests", rodar o workflow `Base de mercados` e fechar e reabrir o PR de dados para os checks rodarem.
 - **Cleber:** decidir os PRs do Dependabot abertos em 2026-11-12 (#3 agrupado, #4 TypeScript 7; `@astrojs/check` aceita só TS 5 ou 6).
 - **Cleber:** testar a leitura do QR pela câmera no celular, em produção, com um cupom de verdade.
-- Antes da T16, o Cleber cria a chave da Anthropic e o código de acesso como segredos do Worker (nunca no chat). O banco D1 do assistente é criado pelo deploy; a prévia do #11 é o primeiro teste.
+- Antes da T16, o Cleber cria a chave da Anthropic e o código de acesso como segredos do Worker (nunca no chat). O banco D1 do assistente é criado pelo deploy da `main` depois do #11; a prévia fica sem banco, e o primeiro teste com o Claude é em produção.
 - Conferência agendada contra a produção entra na T19.

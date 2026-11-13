@@ -20,14 +20,14 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 - [careflow/fases.md](projetos/careflow/fases.md) ~1,9k: As fases 0 a 10 do CareFlow - entrega, decisões do Cleber, PRs nos dois repositórios, ADR e o que ficou para depois.
 - [careflow/operacao.md](projetos/careflow/operacao.md) ~1,4k: Operação da demonstração do CareFlow - hospedagem Oracle Always Free, provisionamento, robô da A1, deploy, backup, interruptor e o que falta o Cleber fazer.
 - [careflow/README.md](projetos/careflow/README.md) ~2,1k: CareFlow, o projeto vitrine - o que é, estado atual, estrutura do repositório, ADRs e por onde começar.
-- [cesta-certa.md](projetos/cesta-certa.md) ~3,0k: cesta-certa, comparador da compra do mês entre mercados próximos - estado por PR, stack, rotas, dados só no aparelho, ADRs, deploy na Cloudflare e pendências.
+- [cesta-certa.md](projetos/cesta-certa.md) ~3,3k: cesta-certa, comparador da compra do mês entre mercados próximos - estado por PR, stack, rotas, dados só no aparelho, ADRs, deploy na Cloudflare e pendências.
 - [linkedin.md](projetos/linkedin.md) ~600: Presença no LinkedIn - o que já foi publicado sobre o CareFlow, onde estão os textos e vídeos, limites e regras para novos posts.
 - [lojinha-da-lua.md](projetos/lojinha-da-lua.md) ~1,9k: lojinha-da-lua, catálogo de uma loja real com pedido pelo WhatsApp - stack, rotas, regras de conteúdo da loja, ADRs, deploy na Cloudflare e tarefas comuns.
 - [portfolio-web.md](projetos/portfolio-web.md) ~3,4k: portfolio-web, o site pessoal em Next.js 16 - rotas, onde fica cada conteúdo, visual, testes, deploy na Vercel e tarefas comuns.
 
 ## Stacks (`stacks/`)
 
-- [astro-cloudflare.md](stacks/astro-cloudflare.md) ~1,1k: Padrão Astro + Cloudflare Workers do ecossistema - site estático com ilhas React, CSP por hash, catálogo validado e deploy grátis com prévia por PR.
+- [astro-cloudflare.md](stacks/astro-cloudflare.md) ~1,3k: Padrão Astro + Cloudflare Workers do ecossistema - site estático com ilhas React, CSP por hash, catálogo validado e deploy grátis com prévia por PR.
 - [dotnet.md](stacks/dotnet.md) ~1,4k: Padrão .NET do ecossistema - versões, estrutura de solução, qualidade no build, Minimal APIs, EF Core com Npgsql, resiliência, mensageria e o que evitar.
 - [hospedagem-gratuita.md](stacks/hospedagem-gratuita.md) ~900: Onde hospedar de graça e sem risco de cobrança - Vercel, Cloudflare, Oracle Always Free, GitHub, DuckDNS - com limites, regras de uso e o que já foi descartado.
 - [ia-aplicada.md](stacks/ia-aplicada.md) ~800: Como o ecossistema usa LLM em produto (triagem do CareFlow) e no desenvolvimento - modelo, SDK, guardrails, gravações, avaliação e custos.
@@ -125,4 +125,4 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 - [adr/0003-ferramentas-de-terceiros-para-o-claude.md](docs/adr/0003-ferramentas-de-terceiros-para-o-claude.md) ~2,0k: ADR-0003 da base - spec-kit, claude-mem e ECC avaliados para economizar tokens e recusados como ferramenta; três ideias adaptadas com texto próprio, skill até 4 KB e regra para plugin ou hook de terceiro.
 - [glossario.md](docs/glossario.md) ~1,1k: Glossário do ecossistema - termos de domínio, segurança, mensageria e operação usados nos projetos, com o nome no código.
 
-Total: 86 arquivos, ~81,5k tokens. Ler tudo raramente compensa.
+Total: 86 arquivos, ~82,0k tokens. Ler tudo raramente compensa.

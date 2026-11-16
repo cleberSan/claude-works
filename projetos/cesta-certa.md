@@ -7,7 +7,7 @@ fontes:
 
 # cesta-certa
 
-**Cesta Certa**: site feito primeiro para o celular que compara o preço da lista de compras do mês entre os mercados próximos, pelo objetivo de quem compra, e abre a rota no Waze ou no Google Maps. É de uso próprio do Cleber e peça do portfólio (localização com privacidade, dados só no aparelho, otimizador determinístico, IA com custo limitado). Repositório <https://github.com/cleberSan/cesta-certa>, MIT. **MVP no código:** [spec 0001](https://github.com/cleberSan/cesta-certa/blob/main/docs/specs/0001-mvp-compra-do-mes/spec.md) (40 critérios de aceite, SDD completo), aprovada em 2026-11-10, com T01 a T19 mescladas em 2026-11-16. O status vira `implementada` com a conferência do site no ar verde e os prints de produção da T03 (nota real) e da T16 (Claude respondendo).
+**Cesta Certa**: site feito primeiro para o celular que compara o preço da lista de compras do mês entre os mercados próximos, pelo objetivo de quem compra, e abre a rota no Waze ou no Google Maps. É de uso próprio do Cleber e peça do portfólio (localização com privacidade, dados só no aparelho, otimizador determinístico, IA com custo limitado). Repositório <https://github.com/cleberSan/cesta-certa>, MIT. **MVP no código:** [spec 0001](https://github.com/cleberSan/cesta-certa/blob/main/docs/specs/0001-mvp-compra-do-mes/spec.md) (40 critérios de aceite, SDD completo), aprovada em 2026-11-10, com T01 a T19 mescladas em 2026-11-16. O status vira `implementada` com a conferência do site no ar verde e os prints de produção da T03 (nota real) e da T16 (Claude respondendo). **Novo visual "Feira":** [spec 0002](https://github.com/cleberSan/cesta-certa/blob/main/docs/specs/0002-novo-visual-feira/spec.md) (18 critérios, SDD completo), direção escolhida pelo Cleber num artefato com três propostas e aprovada em 2026-11-16.
 
 ## Regras do produto (não negociáveis)
 
@@ -32,12 +32,14 @@ fontes:
 | #11 | T14, T15 | Onde comprar a lista (objetivo, ranking, teto, combinações; ADR-0006) e servidor do assistente (ADR-0004) | Mesclado 2026-11-13 |
 | #12 | T16 | Tela do assistente: aceite, código no aparelho, contexto sem localização, conferência de valores; Astro 7.4.7 (alertas do audit) | Mesclado 2026-11-16; T16 aberta até o print do Claude em produção |
 | #14 | T17 a T19 | Demonstração e uso sem internet (ADR-0007), README e créditos, conferência diária do site no ar (ADR-0008) | Mesclado 2026-11-16 |
+| #16 | 0002 T00 | Spec, plano e tarefas do novo visual "Feira", ADR-0009 (portão do OK) | Mesclado 2026-11-16 |
+| #17 | 0002 T01 a T07 | Fontes próprias, barra inferior no celular, início em blocos, lista com grupos e "+"/"−", comparação com cartão da mais barata e selos, movimento só sem pedido de redução, espaço reservado das ilhas (CLS) | Aberto 2026-11-16, para revisão |
 
 A ordem e o que cada tarefa cobre estão em [tarefas.md](https://github.com/cleberSan/cesta-certa/blob/main/docs/specs/0001-mvp-compra-do-mes/tarefas.md). Desde o #10, todos os armazéns da cópia (CA-04) existem: listas, itens, mercados próprios, preços e escolhas das notas.
 
 ## Stack
 
-Astro **7.4** estático (`build.format: "file"`, CSP por hash), React **19** em ilhas (`client:load`), TypeScript 6 com `astro/tsconfigs/strictest`, um **Worker da Cloudflare só para `/api`** (`run_worker_first`; arquivo estático não executa código), Wrangler 4, Vitest 5, Playwright 1.64 + axe (WCAG 2.2 AA, desktop e Pixel 7), ESLint 10, Node **24**, MapLibre GL **6.16** com estilo do OpenFreeMap (sem chave). Sem biblioteca de armazenamento. Ver [stacks/astro-cloudflare.md](../stacks/astro-cloudflare.md).
+Astro **7.4** estático (`build.format: "file"`, CSP por hash), React **19** em ilhas (`client:load`), TypeScript 6 com `astro/tsconfigs/strictest`, um **Worker da Cloudflare só para `/api`** (`run_worker_first`; arquivo estático não executa código), Wrangler 4, Vitest 5, Playwright 1.64 + axe (WCAG 2.2 AA, desktop e Pixel 7), ESLint 10, Node **24**, MapLibre GL **6.16** com estilo do OpenFreeMap (sem chave). Sem biblioteca de armazenamento. Fontes Bricolage Grotesque (títulos, 800) e Inter (texto) em woff2 no repositório, pela API de fontes do Astro com provedor `local`, `swap` e reserva com métricas ajustadas (ADR-0009, cerca de 70 KB). Ver [stacks/astro-cloudflare.md](../stacks/astro-cloudflare.md).
 
 ## Rotas
 
@@ -99,12 +101,14 @@ docs/specs/, docs/adr/      spec 0001 (spec, plano, tarefas) e ADRs
 | 0006 | Comparação da lista: preferência de marca, preço visto por último, combinações de até três mercados com economia mínima, ordem determinística, teto |
 | 0007 | Demonstração separada pelo desenho (fonte `demonstracao` recusada pelo leitor de registros); service worker à mão, registrado só nas páginas do app, rede primeiro nas páginas |
 | 0008 | Conferência diária do site no ar com a mesma suíte E2E; contra a produção a API roda só no desktop, em série, esperando o `Retry-After` |
+| 0009 | Identidade visual "Feira" (verde, menta, etiqueta amarela; tema escuro) e fontes próprias servidas pelo site, sem CDN; um só `<nav>` que vira barra no rodapé abaixo de 48 rem |
 
 ## Testes, CI e deploy
 
 - Checks obrigatórios: `Lint, tipos, testes e build`, `Revisão de dependências`, `CodeQL`. O CI roda auditoria de produção, format, lint, `astro check`, Vitest com 80%, build e E2E sobre `wrangler dev`.
-- Cada critério de aceite tem teste marcado com `// spec 0001 CA-NN`; uma tarefa por commit, cada commit verde.
-- Em 2026-11-16, no #14: 1.971 testes de unidade (100% das linhas) e 524 E2E; a cota do assistente roda num D1 local de verdade (`getPlatformProxy` do wrangler). O service worker roda nos testes de unidade numa VM do Node; no E2E fica bloqueado, menos em `offline.spec.ts`. Safari e Firefox não estão no CI.
+- Cada critério de aceite tem teste marcado com `// spec NNNN CA-NN`; uma tarefa por commit, cada commit verde.
+- No #17 (2026-11-16): 1.984 testes de unidade (99,7% das linhas) e 649 E2E; Lighthouse no celular com LCP de 1,5 a 2,0 s e CLS até 0,04 em todas as páginas (o início pedia LCP abaixo de 2,5 s e CLS abaixo de 0,1).
+- A cota do assistente roda num D1 local de verdade (`getPlatformProxy` do wrangler). O service worker roda nos testes de unidade numa VM do Node; no E2E fica bloqueado, menos em `offline.spec.ts`. Safari e Firefox não estão no CI.
 - **Site no ar** (`.github/workflows/producao.yml`, ADR-0008): a suíte E2E contra a produção todo dia às 09:43 UTC e à mão; falha agendada abre issue. Sem gatilho de PR, porque a suíte de um PR conhece telas que a produção ainda não tem. Primeira execução, disparada à mão depois do #14: verde em 2026-11-16 (478 passaram, 48 pulados de propósito, como o assistente sem código e a API no celular).
 - A câmera é simulada no E2E: `getUserMedia` devolve o vídeo de um canvas com o QR desenhado a partir dos módulos de uma fixture; o Chromium de teste não tem `BarcodeDetector`, então a leitura passa pelo jsQR (o caminho do iPhone).
 - O mapa abre só no toque, com o código, o worker e o CSS do MapLibre baixados nessa hora; a CSP libera `tiles.openfreemap.org` só em `/mercados`. O E2E simula o OpenFreeMap; o container não alcança o serviço real.

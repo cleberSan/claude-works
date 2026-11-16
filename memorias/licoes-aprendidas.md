@@ -1,5 +1,5 @@
 ---
-resumo: Lições técnicas que custaram tempo (cobertura, Polly, CI, CodeQL, Dependabot, Oracle, cookies, LLM, imagens, Cloudflare, IndexedDB) para não repetir.
+resumo: Lições técnicas que custaram tempo (cobertura, Polly, CI, CodeQL, Dependabot, Oracle, cookies, LLM, imagens, Cloudflare, IndexedDB, CSP, axe, CLS) para não repetir.
 atualizado: 2026-11-16
 ---
 
@@ -51,6 +51,10 @@ Cada item: o sintoma, a causa e o que fazer. Origem entre parênteses.
 - **App da Cloudflare já instalado na conta:** repositório novo precisa ser liberado no GitHub (Applications > Cloudflare Workers and Pages > Configure > Repository access) antes de aparecer no painel para importar. (cesta-certa #2)
 - **IndexedDB:** abrir um banco com versão menor que a gravada falha com `VersionError` (deploy revertido depois de uma migração); conexão aberta em outra aba bloqueia a atualização do esquema até fechar, então feche no evento `versionchange` e peça para recarregar. O Node não tem IndexedDB: o adaptador é provado no E2E, e as regras ficam atrás de uma interface com versão em memória. (cesta-certa ADR-0002)
 - **Importação que substitui tudo** deixa as outras abas com estado velho: avise por `BroadcastChannel` e recarregue a página devolvida pelo cache de voltar e avançar (`pageshow` com `persisted`). (cesta-certa ADR-0002)
+- **CSP sem `unsafe-inline` e largura calculada:** o SSR de uma ilha React escreve `style="width:…"` no HTML, que a CSP bloqueia (e a hidratação não corrige). Para barra proporcional, use SVG com a largura no atributo `width` do `<rect>`, que não é estilo. (cesta-certa #17)
+- **Barra fixa ou presa ao pé da tela e axe:** durante a rolagem ela cobre parte de botões e o axe acusa alvo pequeno (2.5.8, "partially obscured"). Meça com a página no fim, onde a barra volta ao lugar dela, e use `scroll-padding-bottom` para o foco do teclado não ficar atrás dela (2.4.11). (cesta-certa #17)
+- **`scroll-behavior: smooth` no E2E:** `window.scrollTo(0, y)` anima e a medida feita logo depois sai errada; use `scrollTo({ top, behavior: "instant" })`. (cesta-certa #17)
+- **CLS de ilha que abre do IndexedDB:** trocar o "Abrindo…" pela tela pronta empurra o texto de baixo (CLS de 0,15 a 0,36 no Lighthouse). Dê ao aviso de abertura a altura aproximada da tela pronta; o CLS foi a 0. (cesta-certa #17)
 - **Next.js 16** reescreve o bloco de regras no `AGENTS.md` ao rodar `next dev`; commitar o bloco mantém a árvore limpa.
 
 ## Dados e IA

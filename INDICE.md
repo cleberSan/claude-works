@@ -9,7 +9,7 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 - [convencoes-de-trabalho.md](memorias/convencoes-de-trabalho.md) ~1,4k: Como o trabalho anda - projeto no Claude, uma thread por fase, pedido novo com SDD, cards de decisão, PRs, ordem de merge, entrega de textos.
 - [decisoes.md](memorias/decisoes.md) ~2,7k: Linha do tempo das decisões do Cleber em todos os projetos, com o porquê e onde estão registradas.
 - [economia-de-tokens.md](memorias/economia-de-tokens.md) ~700: O que economiza tokens no ecossistema - esforço e modelo pelo nível SDD, como ler a base, tamanho de skill e da memória do projeto, e o que não instalar.
-- [licoes-aprendidas.md](memorias/licoes-aprendidas.md) ~2,5k: Lições técnicas que custaram tempo (cobertura, Polly, CI, CodeQL, Dependabot, Oracle, cookies, LLM, imagens, Cloudflare, IndexedDB) para não repetir.
+- [licoes-aprendidas.md](memorias/licoes-aprendidas.md) ~2,8k: Lições técnicas que custaram tempo (cobertura, Polly, CI, CodeQL, Dependabot, Oracle, cookies, LLM, imagens, Cloudflare, IndexedDB, CSP, axe, CLS) para não repetir.
 - [perfil-e-preferencias.md](memorias/perfil-e-preferencias.md) ~1,1k: Quem é o Cleber (só fatos públicos), como ele quer as respostas e o que é decisão dele.
 - [spec-driven-development.md](memorias/spec-driven-development.md) ~1,8k: Spec-Driven Development no ecossistema - quando vale (direto, leve, completo), spec, plano e tarefas em docs/specs, critérios de aceite CA-NN, portão do Cleber e rastreio até o teste.
 
@@ -20,7 +20,7 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 - [careflow/fases.md](projetos/careflow/fases.md) ~1,9k: As fases 0 a 10 do CareFlow - entrega, decisões do Cleber, PRs nos dois repositórios, ADR e o que ficou para depois.
 - [careflow/operacao.md](projetos/careflow/operacao.md) ~1,4k: Operação da demonstração do CareFlow - hospedagem Oracle Always Free, provisionamento, robô da A1, deploy, backup, interruptor e o que falta o Cleber fazer.
 - [careflow/README.md](projetos/careflow/README.md) ~2,1k: CareFlow, o projeto vitrine - o que é, estado atual, estrutura do repositório, ADRs e por onde começar.
-- [cesta-certa.md](projetos/cesta-certa.md) ~4,1k: cesta-certa, comparador da compra do mês entre mercados próximos - estado por PR, stack, rotas, dados só no aparelho, ADRs, deploy na Cloudflare e pendências.
+- [cesta-certa.md](projetos/cesta-certa.md) ~4,4k: cesta-certa, comparador da compra do mês entre mercados próximos - estado por PR, stack, rotas, dados só no aparelho, ADRs, deploy na Cloudflare e pendências.
 - [linkedin.md](projetos/linkedin.md) ~600: Presença no LinkedIn - o que já foi publicado sobre o CareFlow, onde estão os textos e vídeos, limites e regras para novos posts.
 - [lojinha-da-lua.md](projetos/lojinha-da-lua.md) ~1,9k: lojinha-da-lua, catálogo de uma loja real com pedido pelo WhatsApp - stack, rotas, regras de conteúdo da loja, ADRs, deploy na Cloudflare e tarefas comuns.
 - [portfolio-web.md](projetos/portfolio-web.md) ~3,4k: portfolio-web, o site pessoal em Next.js 16 - rotas, onde fica cada conteúdo, visual, testes, deploy na Vercel e tarefas comuns.
@@ -125,4 +125,4 @@ Uma linha por arquivo: nome, tokens estimados e resumo. Comece pelo [CLAUDE.md](
 - [adr/0003-ferramentas-de-terceiros-para-o-claude.md](docs/adr/0003-ferramentas-de-terceiros-para-o-claude.md) ~2,0k: ADR-0003 da base - spec-kit, claude-mem e ECC avaliados para economizar tokens e recusados como ferramenta; três ideias adaptadas com texto próprio, skill até 4 KB e regra para plugin ou hook de terceiro.
 - [glossario.md](docs/glossario.md) ~1,1k: Glossário do ecossistema - termos de domínio, segurança, mensageria e operação usados nos projetos, com o nome no código.
 
-Total: 86 arquivos, ~83,2k tokens. Ler tudo raramente compensa.
+Total: 86 arquivos, ~83,8k tokens. Ler tudo raramente compensa.

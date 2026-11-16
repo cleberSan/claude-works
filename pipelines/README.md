@@ -1,6 +1,6 @@
 ---
 resumo: Portões de qualidade e regras dos workflows do GitHub Actions, checks obrigatórios por repositório, Dependabot com auto-merge criterioso e os modelos prontos para copiar.
-atualizado: 2026-10-30
+atualizado: 2026-11-16
 ---
 
 # Pipelines
@@ -51,6 +51,7 @@ Proteção: exigir PR, checks acima, sem bypass. Aprovação obrigatória deslig
 | careflow | Interruptor do Painel ao vivo | liga/desliga o Demo sem redeploy |
 | careflow | Gravar respostas da triagem | chamadas reais ao modelo com teto; secret só ali |
 | lojinha-da-lua | Site no ar | modelo [conferencia-producao.yml](conferencia-producao.yml) |
+| cesta-certa | Site no ar | mesmo modelo, sem gatilho de PR; a API contra a produção roda num projeto só, em série, e espera o `Retry-After` do limite por IP ([ADR-0008](https://github.com/cleberSan/cesta-certa/blob/main/docs/adr/0008-conferencia-do-site-no-ar.md)) |
 
 ## Dependabot e auto-merge (2026-10-30)
 

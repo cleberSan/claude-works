@@ -1,6 +1,6 @@
 ---
 resumo: Lições técnicas que custaram tempo (cobertura, Polly, CI, CodeQL, Dependabot, Oracle, cookies, LLM, imagens, Cloudflare, IndexedDB) para não repetir.
-atualizado: 2026-11-12
+atualizado: 2026-11-16
 ---
 
 # Lições aprendidas
@@ -22,6 +22,7 @@ Cada item: o sintoma, a causa e o que fazer. Origem entre parênteses.
 - Action de terceiro com tag móvel é alerta do CodeQL. Use só `actions/*` e `github/*`, ou fixe por SHA. (fase 9)
 - Dependabot de TypeScript 7 quebrou `npm ci` porque `@astrojs/check` exige TS ^5 ou ^6 como peer. Não dá para aceitar sem a dependência acompanhar. (lojinha)
 - **CodeQL também analisa os testes.** `texto.replace("}", ",}")` numa fixture de teste virou alerta alto `js/incomplete-sanitization` (`replace` com texto troca só a primeira ocorrência) e reprovou o check obrigatório. Não era brecha, mas a saída é escrever sem o padrão (montar o texto com `slice` e template), não dispensar o alerta. (cesta-certa #5)
+- **Texto hex fixo que vira código é alerta crítico, até em teste.** Uma versão de exemplo `"0123456789abcdef"` montada dentro do `public/sw.js` e rodada com `runInNewContext` deu `js/hardcoded-data-interpreted-as-code` (o CodeQL trata 8 ou mais caracteres hex com dígito como carga escondida). Saída: rótulo legível no teste; no build a versão é calculada e não acusa. (cesta-certa #14)
 - **Repositório novo:** repositório vazio não aceita PR (um commit vazio na `main` serve de base); o check `Revisão de dependências` falha até o Dependency graph ser ligado em Advanced Security; os checks só podem ser marcados como obrigatórios depois de rodarem uma vez, porque antes disso o nome não aparece na busca. (cesta-certa #1, #2)
 
 ## Dependabot e auto-merge
